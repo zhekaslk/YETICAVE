@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><? echo $page_name ?></title>
+    <title><?=$page_name ?></title>
     <link href="css/normalize.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -23,10 +23,10 @@
         <nav class="user-menu">
             <? if ($is_auth == true) {  ?>
                 <div class="user-menu__image>">
-                    <img src="<? echo $user_avatar;?>" width="40" height="40" alt="Пользователь" >
+                    <img src="<?=$user_avatar;?>" width="40" height="40" alt="Пользователь" >
                 </div>
                 <div class="user-menu__logged">
-                    <p><? echo $user_name; ?> </p>
+                    <p><?=$user_name; ?> </p>
                 </div>
             <? }
             else { ?>
@@ -47,7 +47,7 @@
 </header>
 
 <main class="container">
-    <? echo $main_content; ?>
+    <?=$main_content; ?>
 </main>
 
 <footer class="main-footer">
@@ -56,7 +56,7 @@
             <? $i = 0;
             while ($i<count($category)) { ?>
                 <li class="nav__item">
-                    <a href="all-lots.html"><? echo $category[$i]?></a>
+                    <a href="all-lots.html"><?=$category[$i]?></a>
                 </li> <?
                 $i++;
             }

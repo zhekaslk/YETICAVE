@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eugene
- * Date: 05.12.18
- * Time: 2:25
- */
 
-function templating($template_route, $template_data) {          ///функция шаблонизации
+function templating($template_route, $template_data) {      ///функция шаблонизации
         if (file_exists($template_route) == false){
             return 'ERROR!!!';
         }
@@ -20,7 +14,8 @@ function templating($template_route, $template_data) {          ///функци�
         }
     }
 
-function format_sum($format_sum) {          ///функция форматирования отображения стоимости лота
+function format_sum($format_sum)
+    {          ///функция форматирования отображения стоимости лота
     $format_sum = ceil($format_sum);
     if ($format_sum > 1000) {
         $format_sum = number_format($format_sum, 0, ",", " ");
