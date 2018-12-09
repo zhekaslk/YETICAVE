@@ -11,18 +11,10 @@ $product = [
     ["name"=> "Куртка для сноуборда DC Mutiny Charocal", "category"=>$category[3], "price"=> 7500, "picture"=> "img/lot-5.jpg"],
     ["name"=> "Маска Oakley Kanopu", "category"=>$category[5], "price"=> 5400, "picture"=> "img/lot-6.jpg"]
 ];
-
-function format_sum($format_sum) {
-    $format_sum = ceil($format_sum);
-    if ($format_sum > 1000) {
-        $format_sum = number_format($format_sum, 0, ",", " ");
-    }
-    return $format_sum." &#8381";
-};
+date_default_timezone_get("Europe/Moscow");
 require_once "functions.php";
-$main_content = shaba("templates/index.php", ["product" => $product]);
-$layout_content = shaba("templates/layout.php", ["page_name" => "Главная", "is_auth" => $is_auth, "user_avatar" => $user_avatar, "user_name" => $user_name, "main_content" => $main_content, "category" => $category]);
+$main_content = templating("templates/index.php", ["product" => $product]);
+$layout_content = templating("templates/layout.php", ["page_name" => "Главная", "is_auth" => $is_auth, "user_avatar" => $user_avatar, "user_name" => $user_name, "main_content" => $main_content, "category" => $category]);
 print $layout_content;
-
 
 ?>
