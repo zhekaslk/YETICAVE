@@ -31,3 +31,5 @@ function lot_timer () {             ///функция вывода часов и
     $minutes = floor(($secs_to_midnight % 3600)/60);
     return "$hours:$minutes";
 }
+
+
