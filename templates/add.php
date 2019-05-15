@@ -32,7 +32,7 @@
             <div class="form__item <? isset($errors["category"]) ? print "form__item--invalid" : print "" ?>"">
                 <label for="category">Категория</label>
                 <select id="category" name="category"  >
-                    <option> <? isset($add_lot["category"]) ? print "value".$add_lot["category"] : print "value=\"disabled selected\">Выберите категорию"?></option>
+                    <option> <? //isset($add_lot["category"]) ? print "value".$add_lot["category"] : print "value=\"disabled selected\">Выберите категорию"?></option>
                     <? foreach ($category as $value) { ?>
                        <option><?= $value; ?> </option>
                      <? } ?>
