@@ -17,7 +17,7 @@ if(!array_key_exists($lot_id, $product)) {
 }
 
 $lot = $product[$lot_id];
-
+var_dump($lot);
 $main_content = templating("templates/lot.php", ["lot" => $lot]);
 $layout_content = templating("templates/layout.php", ["page_name" => "Лоты", "is_auth" => $is_auth, "user_avatar" => $user_avatar, "user_name" => $user_name, "main_content" => $main_content, "category" => $category]);
 print $layout_content;
