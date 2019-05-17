@@ -18,20 +18,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="add.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="add.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/add.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+            <state relative-caret-position="285">
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/add.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="55" column="42" lean-forward="true" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+            <state relative-caret-position="345">
+              <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -92,10 +92,10 @@
       <find>req</find>
       <find>form__it</find>
       <find>add_lot</find>
-      <find>form__err</find>
       <find>sub</find>
       <find>img</find>
       <find>file</find>
+      <find>form__err</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,8 +114,8 @@
         <option value="$PROJECT_DIR$/lot.php" />
         <option value="$PROJECT_DIR$/templates/layout.php" />
         <option value="$PROJECT_DIR$/data.php" />
-        <option value="$PROJECT_DIR$/templates/add.php" />
         <option value="$PROJECT_DIR$/templates/lot.php" />
+        <option value="$PROJECT_DIR$/templates/add.php" />
         <option value="$PROJECT_DIR$/add.php" />
       </list>
     </option>
@@ -226,7 +226,7 @@
       <workItem from="1557781109414" duration="24580000" />
       <workItem from="1557901625605" duration="5065000" />
       <workItem from="1557911188019" duration="15059000" />
-      <workItem from="1558116779167" duration="3365000" />
+      <workItem from="1558116779167" duration="7406000" />
     </task>
     <task id="LOCAL-00001" summary="Task 3, part 1: Templating">
       <created>1544239061639</created>
@@ -270,11 +270,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557931292662</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Task 4, Part 2: Form (shitcode) &#10;//остались ошибки загрузка файла">
+      <created>1558120347499</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1558120347499</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129206000" />
+    <option name="totallyTimeSpent" value="133247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
@@ -349,7 +356,8 @@
     <MESSAGE value="Before Task 4: minor edits" />
     <MESSAGE value="Task 4, Part 1: Lots" />
     <MESSAGE value="Task 4, Part 2: Form (shitcode)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task 4, Part 2: Form (shitcode)" />
+    <MESSAGE value="Task 4, Part 2: Form (shitcode) &#10;//остались ошибки загрузка файла" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task 4, Part 2: Form (shitcode) &#10;//остались ошибки загрузка файла" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -702,17 +710,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/add.php">
+    <entry file="file://$PROJECT_DIR$/templates/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+        <state relative-caret-position="345">
+          <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/add.php">
+    <entry file="file://$PROJECT_DIR$/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="55" column="42" lean-forward="true" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+        <state relative-caret-position="285">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
         </state>
       </provider>
     </entry>

@@ -34,7 +34,7 @@
                 <select id="category" name="category"  >
                     <option <? if (isset($add_lot["category"])) { print $add_lot["category"]; }?> value="" selected disabled hidden>Выберите категорию</option>
                     <? foreach ($category as $value) { ?>
-                       <option><?= $value; ?> </option>
+                       <option><?=$value; ?> </option>
                      <? } ?>
                 </select>
                 <span class="form__error"><?=$errors['category']; ?></span>
@@ -42,10 +42,10 @@
         </div>
         <div class="form__item form__item--wide <? isset($errors["message"]) ? print "form__item--invalid" : print "" ?>"">
             <label for="message">Описание</label>
-            <textarea id="message" name="message" placeholder="Напишите описание лота"></textarea>
+            <textarea id="message" name="message" placeholder="Напишите описание лота"><? isset($add_lot['message']) ? print $add_lot['message'] : print ''?></textarea>
             <span class="form__error"><?=$errors['message']; ?></span>
         </div>
-        <div class="form__item form__item--file"> <!-- form__item--uploaded -->
+        <div class="form__item form__item--file  <? isset($errors["file"]) ? print "form__item--invalid" : print "" ?>""> <!-- form__item--uploaded -->
             <label>Изображение</label>
             <div class="preview">
                 <button class="preview__remove" type="button">x</button>
@@ -59,6 +59,7 @@
                     <span>+ Добавить</span>
                 </label>
             </div>
+            <span class="form__error"><?=$errors['file']; ?></span>
         </div>
         <div class="form__container-three">
             <div class="form__item form__item--small <? isset($errors["lot-rate"]) ? print "form__item--invalid" : print "" ?>"">
