@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e4c9de47-71ef-4163-a58b-b6106c8f03d9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.php" beforeDir="false" afterPath="$PROJECT_DIR$/data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lot.php" beforeDir="false" afterPath="$PROJECT_DIR$/lot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lot.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,8 +21,8 @@
       <file leaf-file-name="add.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/add.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
+            <state relative-caret-position="315">
+              <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -32,8 +30,8 @@
       <file leaf-file-name="add.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/add.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="24" column="32" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+            <state relative-caret-position="220">
+              <caret line="55" column="42" lean-forward="true" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -50,8 +48,8 @@
       <file leaf-file-name="lot.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/lot.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+            <state relative-caret-position="285">
+              <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -116,9 +114,9 @@
         <option value="$PROJECT_DIR$/lot.php" />
         <option value="$PROJECT_DIR$/templates/layout.php" />
         <option value="$PROJECT_DIR$/data.php" />
+        <option value="$PROJECT_DIR$/templates/add.php" />
         <option value="$PROJECT_DIR$/templates/lot.php" />
         <option value="$PROJECT_DIR$/add.php" />
-        <option value="$PROJECT_DIR$/templates/add.php" />
       </list>
     </option>
   </component>
@@ -144,17 +142,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="yeti" type="cbb8eebc:String" user="yeti" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -169,11 +156,27 @@
             <path>
               <item name="yeti" type="b2602c69:ProjectViewProjectNode" />
               <item name="yeti" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yeti" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yeti" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="yeti" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="yeti" type="cbb8eebc:String" user="yeti" />
             </path>
           </expand>
           <select />
@@ -222,7 +225,8 @@
       <workItem from="1556520560774" duration="5449000" />
       <workItem from="1557781109414" duration="24580000" />
       <workItem from="1557901625605" duration="5065000" />
-      <workItem from="1557911188019" duration="14495000" />
+      <workItem from="1557911188019" duration="15059000" />
+      <workItem from="1558116779167" duration="3365000" />
     </task>
     <task id="LOCAL-00001" summary="Task 3, part 1: Templating">
       <created>1544239061639</created>
@@ -252,11 +256,25 @@
       <option name="project" value="LOCAL" />
       <updated>1556419903194</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Task 4, Part 2: Form (shitcode)">
+      <created>1557930845060</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1557930845060</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Task 4, Part 2: Form (shitcode)">
+      <created>1557931292662</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1557931292662</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125277000" />
+    <option name="totallyTimeSpent" value="129206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
@@ -268,7 +286,7 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32755905" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
@@ -286,6 +304,42 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -294,7 +348,8 @@
     <MESSAGE value="Task 3, part 2: Lot time" />
     <MESSAGE value="Before Task 4: minor edits" />
     <MESSAGE value="Task 4, Part 1: Lots" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task 4, Part 1: Lots" />
+    <MESSAGE value="Task 4, Part 2: Form (shitcode)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task 4, Part 2: Form (shitcode)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -635,8 +690,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/lot.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        <state relative-caret-position="285">
+          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -649,15 +704,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="65" column="76" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="76" />
+        <state relative-caret-position="315">
+          <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="24" column="32" lean-forward="true" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+        <state relative-caret-position="220">
+          <caret line="55" column="42" lean-forward="true" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
         </state>
       </provider>
     </entry>

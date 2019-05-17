@@ -32,7 +32,7 @@
             <div class="form__item <? isset($errors["category"]) ? print "form__item--invalid" : print "" ?>"">
                 <label for="category">Категория</label>
                 <select id="category" name="category"  >
-                    <option> <? //isset($add_lot["category"]) ? print "value".$add_lot["category"] : print "value=\"disabled selected\">Выберите категорию"?></option>
+                    <option <? if (isset($add_lot["category"])) { print $add_lot["category"]; }?> value="" selected disabled hidden>Выберите категорию</option>
                     <? foreach ($category as $value) { ?>
                        <option><?= $value; ?> </option>
                      <? } ?>
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="form__input-file">
-                <input class="visually-hidden" type="file" name="picture"  id="photo2" value="">
+                <input class="visually-hidden" type="file" name="lot-img"  id="photo2" value="">
                 <label for="photo2">
                     <span>+ Добавить</span>
                 </label>

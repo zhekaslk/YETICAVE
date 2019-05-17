@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $required = ['lot-name', 'category', 'message', 'lot-rate', 'lot-step', 'lot-date'];
     $errors = [];
     foreach ($required as $value) {
-        //проверка на заполненность
+        //проверка на заполненность поля
         if (empty($_POST[$value])) {
             $errors[$value] = 'Это поле надо заполнить, падла!';
         }
@@ -47,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $errors['file'] = 'Загрузите картинку в формате GIF';
         }
         else {
-            move_uploaded_file($tmp_name, 'img/' . $path);
-            $add_lot['path'] = $path;
+            move_uploaded_file($path, 'img/' . $path);
+            $add_lot['picture'] = $path;
         }
     }
     else {
