@@ -7,7 +7,7 @@ require_once "data.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $add_lot = $_POST;
-    //var_dump($add_lot);
+    var_dump($add_lot);
     $required = ['lot-name', 'category', 'message', 'lot-rate', 'lot-step', 'lot-date'];
     $errors = [];
     foreach ($required as $value) {
