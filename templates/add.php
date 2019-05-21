@@ -67,10 +67,10 @@
             <span class="form__error"><?=$errors['file']; ?></span>
         </div>
         <div class="form__container-three">
-            <div class="form__item form__item--small <? isset($errors["lot-rate"]) ? print "form__item--invalid" : "" ?>"">
+            <div class="form__item form__item--small <? isset($errors["lot-price"]) ? print "form__item--invalid" : "" ?>"">
                 <label for="lot-rate">Начальная цена</label>
-                <input id="lot-rate"  name="lot-rate" placeholder="0"  value="<? isset($add_lot['lot-rate']) ? print $add_lot['lot-rate'] : ""?>">
-                <span class="form__error"><?=$errors['lot-rate']; ?></span>
+                <input id="lot-rate"  name="lot-price" placeholder="0"  value="<? isset($add_lot['lot-price']) ? print $add_lot['lot-price'] : ""?>">
+                <span class="form__error"><?=$errors['lot-price']; ?></span>
             </div>
             <div class="form__item form__item--small <? isset($errors["lot-step"]) ? print "form__item--invalid" : print "" ?>"">
                 <label for="lot-step">Шаг ставки</label>

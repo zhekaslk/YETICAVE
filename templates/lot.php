@@ -16,16 +16,16 @@
                 <div class="lot-item__cost-state">
                     <div class="lot-item__rate">
                         <span class="lot-item__amount">Текущая цена</span>
-                        <span class="lot-item__cost"><?= $lot['lot-rate']?></span>
+                        <span class="lot-item__cost"><?= $lot['lot-price']?></span>
                     </div>
                     <div class="lot-item__min-cost">
-                        Мин. ставка <span><?= $lot['lot-rate'] + $lot['lot-step']?></span>
+                        Мин. ставка <span><?= $lot['lot-price'] + $lot['lot-step']?></span>
                     </div>
                 </div>
                 <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">
                     <p class="lot-item__form-item">
                         <label for="cost">Ваша ставка</label>
-                        <input id="cost" type="number" name="cost" placeholder=<?= $lot['lot-rate'] + $lot['lot-step']?>>
+                        <input id="cost" type="number" name="cost" placeholder=<?= $lot['lot-price'] + $lot['lot-step']?>>
                     </p>
                     <button type="submit" class="button">Сделать ставку</button>
                 </form>

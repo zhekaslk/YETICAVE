@@ -7,8 +7,7 @@ require_once "data.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $add_lot = $_POST;
-    var_dump($add_lot);
-    $required = ['lot-name', 'category', 'message', 'lot-rate', 'lot-step', 'lot-date'];
+    $required = ['lot-name', 'category', 'message', 'lot-price', 'lot-step', 'lot-date'];
     $errors = [];
     foreach ($required as $value) {
         //проверка на заполненность поля
@@ -17,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
         else {
             //проверка на число
-            if ($value = 'lot-rate') {
+            if ($value = 'lot-price') {
                 if (!filter_var($_POST[$value], FILTER_VALIDATE_INT)) {
                     $errors[$value] = 'Введи нормальную цену, кретин!';
                 }
