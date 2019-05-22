@@ -3,6 +3,11 @@
 
 require_once "functions.php";
 require_once "data.php";
+session_start();
+
+if (empty($_SESSION["user"])) {
+    return http_response_code(403);
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
