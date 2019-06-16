@@ -21,7 +21,7 @@
             </li>
         </ul>
     </nav>
-    <form class="form container" action="/sign-up.php" method="post" <? empty($errors) ? "" : print "form--invalid" ?> > <!-- form--invalid -->
+    <form enctype="multipart/form-data" class="form container  <? empty($errors) ? "" : print "form--invalid" ?> action="/sign-up.php" method="post" > <!-- form--invalid -->
         <h2>Регистрация нового аккаунта</h2>
         <div class="form__item <? isset($errors['email']) ? print "form__item--invalid" : "" ?> "> <!-- form__item--invalid -->
             <label for="email">E-mail*</label>
@@ -52,11 +52,12 @@
                 </div>
             </div>
             <div class="form__input-file">
-                <input class="visually-hidden" type="file" id="photo2" value="">
+                <input class="visually-hidden" type="file" name="avatar"  id="photo2" value="">
                 <label for="photo2">
                     <span>+ Добавить</span>
                 </label>
             </div>
+            <span class="form__error"><?=$errors['avatar']; ?></span>
         </div>
         <span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span>
         <button type="submit" class="button">Зарегистрироваться</button>

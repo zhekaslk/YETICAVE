@@ -36,15 +36,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     //var_dump($_FILES);
     if (!empty($_FILES['lot-img']['name'])) {
         $tmp_name = $_FILES['lot-img']['tmp_name'];
-        $path = $_FILES['lot-img']['name'];
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $file_type = finfo_file($finfo, $tmp_name);
         if ($file_type !== "image/jpeg") {
             $errors['file'] = 'Загрузите картинку!';
         }
         else {
-            move_uploaded_file($path, 'img/' . $path);
-            $add_lot['picture'] = $path;
+            move_uploaded_file($tmp_name, 'img' . $tmp_name);
+            $add_lot['picture'] = 'img' .$tmp_name;
         }
     }
     else {
@@ -61,6 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 else {
     $main_content = templating("templates/add.php", ['category' => $category]);
 }
-
-$layout_content = templating("templates/layout.php", ["page_name" => "Лоты", "is_auth" => $is_auth, "user_avatar" => $user_avatar, "user_name" => $user_name, "main_content" => $main_content, "category" => $category]);
+var_dump($tmp_name);
+$layout_content = templating("templates/layout.php", ["page_name" => "Вход", "is_auth" => $is_auth, "user_avatar" => $user_avatar, "user_name" => $user_name, "main_content" => $main_content, "category" => $category]);
 print $layout_content;
