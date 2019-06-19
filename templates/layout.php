@@ -23,7 +23,7 @@
         <nav class="user-menu">
 
                 <div class="user-menu__image>">
-                    <img src="<?=$user_avatar;?>" width="40" height="40" alt="Пользователь" >
+                    <img src="<?=$_SESSION["user"]["avatar"];?>" width="40" height="40" alt="Пользователь" >
                 </div>
                 <div class="user-menu__logged">
                     <p><?=$_SESSION["user"]["name"];?> </p>
@@ -54,14 +54,11 @@
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <? $i = 0;
-            while ($i<count($category)) { ?>
+            <? foreach ($category as $value) { ?>
                 <li class="nav__item">
-                    <a href="all-lots.html"><?=$category[$i]?></a>
-                </li> <?
-                $i++;
-            }
-            ?>
+                    <a href="all-lots.html"><?=$value["name"]?></a>
+            </li>
+            <? } ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">

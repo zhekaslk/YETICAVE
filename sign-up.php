@@ -60,19 +60,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql = "INSERT INTO users (name, email, password, avatar, contact, reg_date) VALUES ('$name', '$email', '$pass', '$avatar', '$contact', CURRENT_DATE())";
         $result = mysqli_query($con, $sql);
         if ($result) {
-            echo "Теперь можешь авторизоваться, холоп";
+            header( "Location: /login.php");
+            //echo "Регистрация прошла успешно. Вы будуте перенаправлены на страницу входа, где сможете войти используя свой email и пароль";
+            exit();
         }
-        header("Location: /login.php");
-        exit();
+        else {
+            $errors["base"] = mysqli_connect_error();
+            $main_content = templating("templates/error.php", ['errors' => $errors]);
+        }
     }
 }
 else {
     $main_content = templating("templates/sign-up.php", ['category' => $category]);
 }
-
-$layout_content = templating("templates/layout.php", ["page_name" => "", "main_content" => $main_content, "category" => $category]);
-
-echo "<br>";
 var_dump($result);
+$layout_content = templating("templates/layout.php", ["page_name" => "", "main_content" => $main_content, "category" => $category]);
 print $layout_content;
 

@@ -8,7 +8,7 @@
 
 require_once "functions.php";
 require_once "data.php";
-require_once "userdata.php";
+require_once "init.php";
 
 session_start();
 
@@ -25,26 +25,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     //валидация данных
     if (empty($errors)) {
-        foreach ($users as $user) {
-            if ($auth['email'] == $user['email']) {
-                if (password_verify($auth['password'], $user['password'])) {
-                    $_SESSION['user'] = $user;
-                    break;
-                }
-                else {
-                    $errors['password'] = 'Пароль неверный, падла!';
-                    break;
-                }
+        $email = mysqli_real_escape_string($con, $auth["email"]);
+        $sql = "SELECT email, password, name, avatar FROM users WHERE email = '$email'";
+        $result = mysqli_query($con, $sql);
+        if (mysqli_num_rows($result) != 0) {
+            $result_arr = mysqli_fetch_assoc($result);
+            if (!password_verify($auth["password"], $result_arr["password"])) {
+                $errors['auth'] = 'Вы ввели неверный логин/пароль';
             }
-            else {
-                $errors['email'] = 'Сие мыло не зарегано. Падла!';
-            }
+        }
+        else {
+            $errors['auth'] = 'Вы ввели неверный логин/пароль';
         }
     }
     if (count($errors)) {
-        $main_content = templating("templates/login.php", ['category' => $category, 'errors' => $errors, 'auth' => $auth] );
+        $main_content = templating("templates/login.php", ['category' => $category, 'errors' => $errors, 'auth' => $auth]);
     }
     else {
+            $_SESSION['user'] = $result_arr;
             header("Location: /index.php");
             exit();
         }
@@ -52,9 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 else {
     $main_content = templating("templates/login.php", ['category' => $category]);
 }
-//var_dump($auth);
-//var_dump($users);
-//var_dump($errors);
 
-$layout_content = templating("templates/layout.php", ["page_name" => "Лоты", "is_auth" => $is_auth, "user_avatar" => $user_avatar, "user_name" => $user_name, "main_content" => $main_content, "category" => $category]);
+$layout_content = templating("templates/layout.php", ["page_name" => "Главная", "main_content" => $main_content, "category" => $category]);
 print $layout_content;

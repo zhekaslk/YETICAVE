@@ -21,9 +21,15 @@
             </li>
         </ul>
     </nav>
-    <form class="form container" action="/login.php" method="post" <? empty($errors) ? "" : print "form--invalid" ?> > <!-- form--invalid -->
+    <form class="form container <? empty($errors) ? "" : print "form--invalid" ?>" action="/login.php" method="post" > <!-- form--invalid -->
         <h2>Вход</h2>
-        <div class="form__item <? isset($errors["email"]) ? print "form__item--invalid" : "" ?>"> <!-- form__item--invalid -->
+        <? if (isset($errors["auth"])) { ?>
+            <span class="form__error form__error--bottom"><?=$errors["auth"]?></span> <?
+        } ?>
+        <? if (isset($errors["email"]) OR isset($errors["password"])) { ?>
+            <span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span> <?
+        } ?>
+        <div class="form__item <? isset($errors["email"])  ? print "form__item--invalid" : "" ?>"> <!-- form__item--invalid -->
             <label for="email">E-mail*</label>
             <input id="email" type="text" name="email" placeholder="Введите e-mail" value="<? isset($auth['email']) ? print $auth['email'] : print ''?>" >
             <span class="form__error"><?=$errors['email'] ?></span>

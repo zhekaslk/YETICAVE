@@ -60,6 +60,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 else {
     $main_content = templating("templates/add.php", ['category' => $category]);
 }
-var_dump($tmp_name);
 $layout_content = templating("templates/layout.php", ["page_name" => "Вход", "is_auth" => $is_auth, "user_avatar" => $user_avatar, "user_name" => $user_name, "main_content" => $main_content, "category" => $category]);
 print $layout_content;

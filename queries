@@ -4,7 +4,7 @@ SELECT name FROM category;
 
 -- получить название, стартовую цену, ссылку на изображение, дату создания 
 
-SELECT lot.name, price, img, create_date, COUNT(rate.id), category.name FROM lot
+SELECT lot.name, price, img, create_date, COUNT(rate.id), category.name as category FROM lot
 LEFT JOIN rate ON rate.id_lot = lot.id
 JOIN category ON lot.id_category = category.id
 WHERE end_date > NOW()
