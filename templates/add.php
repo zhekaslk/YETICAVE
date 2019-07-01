@@ -1,27 +1,14 @@
 <main>
     <nav class="nav">
         <ul class="nav__list container">
-            <li class="nav__item">
-                <a href="all-lots.html">Доски и лыжи</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Крепления</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Ботинки</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Одежда</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Инструменты</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Разное</a>
-            </li>
+            <? foreach ($category as $value) { ?>
+                <li class="nav__item">
+                    <a href="all-lots.html"><?=$value["name"]; ?></a>
+                </li>
+            <? } ?>
         </ul>
     </nav>
-    <form enctype="multipart/form-data" class="form form--add-lot  container <? empty($errors) ? "" : print "form--invalid" ?> action="/add.php" method="post" > <!-- form--invalid -->
+    <form enctype="multipart/form-data" class="form form--add-lot  container <? empty($errors) ? "" : print "form--invalid" ?>" action="/add.php" method="post" > <!-- form--invalid -->
         <h2>Добавление лота</h2>
         <div class="form__container-two">
             <div class="form__item <? isset($errors["lot-name"]) ? print "form__item--invalid" : "" ?>"> <!-- form__item--invalid -->
@@ -29,7 +16,7 @@
                 <input id="lot-name" type="text" name="lot-name" placeholder="Введите наименование лота" value="<? isset($add_lot['lot-name']) ? print $add_lot['lot-name'] : print ''?>">
                 <span class="form__error"> <?=$errors['lot-name'] ?></span>
             </div>
-            <div class="form__item <? isset($errors["category"]) ? print "form__item--invalid" : "" ?>"">
+            <div class="form__item <? isset($errors["category"]) ? print "form__item--invalid" : "" ?>">
                 <label for="category">Категория</label>
                 <select id="category" name="category"  >
                     <? if (isset($add_lot["category"])) { ?>
@@ -39,7 +26,7 @@
                     <option value="" selected disabled hidden>Выберите категорию</option> <?
                      }
                      foreach ($category as $value) { ?>
-                       <option><?=$value; ?> </option>
+                       <option><?=$value["name"]; ?> </option>
                      <? } ?>
                 </select>
                 <span class="form__error"><?=$errors['category']; ?></span>

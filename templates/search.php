@@ -10,17 +10,21 @@
     </nav>
     <div class="container">
         <section class="lots">
-            <h2><?=$message; ?></h2>
-            <? if (isset($lot)) { ?>
-            <ul class="lots__list">
-                <? foreach ($lot as $value) { ?>
+            <? if (!$_GET['search'] OR empty($lot)) { ?>
+            <h2>По вашему запросу ничего не найдено</h2>
+        </section>
+            <? }
+            else { ?>
+                <h2>Результаты поиска по запросу «<span><?=$_GET['search']; ?></span>»</h2>
+        <ul class="lots__list">
+            <? foreach ($lot as $value) { ?>
                 <li class="lots__item lot">
                     <div class="lot__image">
                         <img src="<?=$value['img'];?>" width="350" height="260" alt="Сноуборд">
                     </div>
                     <div class="lot__info">
                         <span class="lot__category"><?=$value['category'];?></span>
-                        <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?=$value["id"]; ?>"><?=$value['name'];?></a></h3>
+                        <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?=$value['id']; ?>"><?=$value['name'];?></a></h3>
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
@@ -31,13 +35,10 @@
                             </div>
                         </div>
                     </div>
-                    <? } ?>
-            </ul>
-        </section>
-            <? }
-            else { ?>
-                </section>
+                </li>
             <? } ?>
+        </ul>
+        </section>
         <ul class="pagination-list">
             <li class="pagination-item pagination-item-prev"><a>Назад</a></li>
             <li class="pagination-item pagination-item-active"><a>1</a></li>
@@ -46,5 +47,7 @@
             <li class="pagination-item"><a href="#">4</a></li>
             <li class="pagination-item pagination-item-next"><a href="#">Вперед</a></li>
         </ul>
+            <? } ?>
     </div>
 </main>
+

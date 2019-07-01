@@ -22,28 +22,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         else {
             //проверка на число
             if ($value = 'lot-price') {
-                if (!filter_var($_POST[$value], FILTER_VALIDATE_INT)) {
+                if (!filter_var($_POST[$value], FILTER_VALIDATE_INT) OR $_POST[$value]<= 0) {
                     $errors[$value] = 'Введи нормальную цену, кретин!';
                 }
             }
             if ($value = 'lot-step') {
-                if (!filter_var($_POST[$value], FILTER_VALIDATE_INT)) {
-                    $errors[$value] = 'Введи число, кретин!';
+                if (!filter_var($_POST[$value], FILTER_VALIDATE_INT) OR $_POST[$value]<= 0) {
+                    $errors[$value] = 'Введи нормальный шаг, кретин!';
                 }
             }
         }
     }
-    //var_dump($_FILES);
     if (!empty($_FILES['lot-img']['name'])) {
         $tmp_name = $_FILES['lot-img']['tmp_name'];
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $file_type = finfo_file($finfo, $tmp_name);
-        if ($file_type !== "image/jpeg") {
-            $errors['file'] = 'Загрузите картинку!';
-        }
-        else {
+        if ($file_type == "image/jpeg" OR $file_type == "image/jpg" OR $file_type == "image/png") {
             move_uploaded_file($tmp_name, 'img' . $tmp_name);
             $add_lot['picture'] = 'img' .$tmp_name;
+        }
+        else {
+            $errors['file'] = 'Загрузите картинку!';
         }
     }
     else {
@@ -53,12 +52,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $main_content = templating("templates/add.php", ['add_lot' => $add_lot, 'category' => $category, 'errors' => $errors] );
     }
     else {
-        $main_content = templating("templates/lot.php", ["lot" => $add_lot]);
+        $category_id = $add_lot["category"];
+        $sql_category_id = "SELECT id FROM category WHERE name = '$category_id'";
+        $result_category = mysqli_query($con, $sql_category_id);
+        $category_id = mysqli_fetch_assoc($result_category);
+        $id_cat = $category_id['id'];
+        $name = mysqli_real_escape_string($con, $add_lot["lot-name"]);
+        $message = mysqli_real_escape_string($con, $add_lot["message"]);
+        $lot_price = mysqli_real_escape_string($con, $add_lot["lot-price"]);
+        $lot_step = mysqli_real_escape_string($con, $add_lot["lot-step"]);
+        $picture = $add_lot["picture"];
+        $userid = $_SESSION['user']['id'];
+        $end_date = $add_lot["lot-date"];
+        $sql = "INSERT INTO lot (name, message, img, price, step, create_date, end_date, id_category, id_author) VALUES ('$name', '$message', '$picture', '$lot_price', '$lot_step', (), '$end_date', '$id_cat', '$userid')";
+        $result = mysqli_query($con, $sql);
+        if ($result) {
+            $lot_id = mysqli_insert_id($con);
+            header("Location: lot.php?lot_id=".$lot_id);
+            exit();
+        }
     }
 
 }
 else {
     $main_content = templating("templates/add.php", ['category' => $category]);
 }
-$layout_content = templating("templates/layout.php", ["page_name" => "Вход", "is_auth" => $is_auth, "user_avatar" => $user_avatar, "user_name" => $user_name, "main_content" => $main_content, "category" => $category]);
+$layout_content = templating("templates/layout.php", ["page_name" => "Добавь", "main_content" => $main_content, "category" => $category]);
+var_dump($_SESSION);
 print $layout_content;

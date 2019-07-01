@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Июн 19 2019 г., 03:04
+-- Время создания: Июл 01 2019 г., 01:45
 -- Версия сервера: 8.0.16
--- Версия PHP: 7.2.17-0ubuntu0.18.04.1
+-- Версия PHP: 7.2.19-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -69,13 +69,13 @@ CREATE TABLE `lot` (
 --
 
 INSERT INTO `lot` (`id`, `name`, `message`, `img`, `price`, `step`, `fav_count`, `create_date`, `end_date`, `id_category`, `id_author`, `id_winner`) VALUES
-(1, '2014 Rossingol District Snowboard', '', 'img/lot-1.jpg', 10999, 1000, NULL, '2019-04-07', '2019-07-27', 1, 1, NULL),
+(1, '2014 Rossingol District Snowboard', '', 'img/lot-1.jpg', 25000, 1000, NULL, '2019-04-07', '2019-07-27', 1, 1, NULL),
 (2, 'DC Ply Mens 2016/2017 Snowboard', 'Сноу агонь!', 'img/lot-2.jpg', 159999, 1000, NULL, '2019-05-30', '2019-06-30', 1, 4, NULL),
 (3, 'Крепления Union Contact Pro 2015 года размер L/XL', 'Крепления что надо!', 'img/lot-3.jpg', 8000, 500, NULL, '2019-05-28', '2019-06-30', 2, 4, NULL),
 (4, 'Ботинки для сноуборда DC Mutiny Charocal', 'Боты как на тебя шили!', 'img/lot-4.jpg', 10999, 1001, NULL, '2019-05-07', '2019-06-28', 3, 4, NULL),
 (5, 'Куртка для сноуборда DC Mutiny Charocal', 'Курточка для мужика!', 'img/lot-5.jpg', 7500, 500, NULL, '2019-05-01', '2019-06-29', 4, 4, NULL),
 (6, 'Маска Oakley Kanopu', 'Маска как на маскарад!', 'img/lot-6.jpg', 5400, 300, NULL, '2019-05-10', '2019-07-27', 6, 4, NULL),
-(7, 'Чебурек', 'Сноуборды для лохов, чебуреки для пацанов!', 'img/cheburek.jpg', 1, 2, NULL, '2019-06-19', '2019-07-19', 6, 24, NULL);
+(10, 'Кал', '3', 'img/tmp/phpdsUCxG', 130, 1, NULL, '2019-06-20', '2019-06-30', 3, 24, NULL);
 
 -- --------------------------------------------------------
 
@@ -100,7 +100,12 @@ INSERT INTO `rate` (`id`, `date`, `bet`, `id_lot`, `id_user`) VALUES
 (2, '2019-05-31 03:12:21', 11000, 1, 3),
 (3, '2019-05-31 05:14:17', 160000, 2, 3),
 (4, '2019-05-31 06:21:24', 11000, 3, 3),
-(5, '2019-05-31 02:00:00', 12000, 1, 2);
+(5, '2019-05-31 02:00:00', 12000, 1, 2),
+(9, '2019-06-24 11:23:58', 123, 10, 24),
+(10, '2019-06-24 11:27:47', 130, 10, 24),
+(11, '2019-06-24 13:13:05', 15000, 1, 24),
+(12, '2019-06-24 13:17:23', 20000, 1, 24),
+(13, '2019-06-24 13:18:37', 25000, 1, 24);
 
 -- --------------------------------------------------------
 
@@ -152,7 +157,9 @@ ALTER TABLE `lot`
   ADD KEY `id_winner` (`id_winner`),
   ADD KEY `price` (`price`),
   ADD KEY `step` (`step`),
-  ADD KEY `fav_count` (`fav_count`);
+  ADD KEY `fav_count` (`fav_count`),
+  ADD KEY `name` (`name`);
+ALTER TABLE `lot` ADD FULLTEXT KEY `lot_search` (`name`,`message`);
 
 --
 -- Индексы таблицы `rate`
@@ -185,12 +192,12 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `lot`
 --
 ALTER TABLE `lot`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT для таблицы `rate`
 --
 ALTER TABLE `rate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --

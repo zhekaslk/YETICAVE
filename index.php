@@ -29,5 +29,6 @@ if (isset($_SESSION["user"])) {
 else {
     $layout_content = templating("templates/layout.php", ["page_name" => "Главная", "main_content" => $main_content, "category" => $category]);
 }
+var_dump($product);
 print $layout_content;
 
