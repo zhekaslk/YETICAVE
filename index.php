@@ -1,12 +1,11 @@
 <?php
-
-
-
+//главная страница сайта
 require_once "functions.php";
 require_once "init.php";
 require_once "data.php";
 session_start();
 
+//получение списка лотов, актуальных на данный момент
 $sql_lots = "SELECT lot.id, lot.name, price, img, create_date, COUNT(rate.id), category.name as category FROM lot
 LEFT JOIN rate ON rate.id_lot = lot.id
 JOIN category ON lot.id_category = category.id
@@ -21,7 +20,6 @@ else {
     $error = mysqli_error($con);
 }
 
-
 $main_content = templating("templates/index.php", ["product" => $product, "category" => $category]);
 if (isset($_SESSION["user"])) {
     $layout_content = templating("templates/layout.php", ["page_name" => "Главная", "user_avatar" => $_SESSION["user"]["avatar"], "user_name" => $_SESSION["user"]["name"], "main_content" => $main_content, "category" => $category]);
@@ -29,6 +27,6 @@ if (isset($_SESSION["user"])) {
 else {
     $layout_content = templating("templates/layout.php", ["page_name" => "Главная", "main_content" => $main_content, "category" => $category]);
 }
-var_dump($product);
+//var_dump($product);
 print $layout_content;
 

@@ -1,29 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eugene
- * Date: 22.05.19
- * Time: 2:39
- */
-
+//страница для авторизации
 require_once "functions.php";
 require_once "data.php";
 require_once "init.php";
 
 session_start();
-
+//проверка отправлена ла форма
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
     $auth = $_POST;
     $errors = [];
-    //проверка на заполненность полей
+    //проверка на заполненность полей добавление ошибок в массив, если таковые имеются
     if (empty($auth['email'])) {
         $errors['email'] = 'Это поле надо заполнить, падла!';
     }
     if (empty($auth['password'])) {
         $errors['password'] = 'Это поле надо заполнить, падла!';
     }
-    //валидация данных
+    //валидация введенных данных
     if (empty($errors)) {
         $email = mysqli_real_escape_string($con, $auth["email"]);
         $sql = "SELECT id, email, password, name, avatar FROM users WHERE email = '$email'";
@@ -38,9 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $errors['auth'] = 'Вы ввели неверный логин/пароль';
         }
     }
+    //если имеются ошибки то показ этих ошибок
     if (count($errors)) {
         $main_content = templating("templates/login.php", ['category' => $category, 'errors' => $errors, 'auth' => $auth]);
     }
+    //если ошибок не имеется то авторизация и переадресация на главную страницу
     else {
             $_SESSION['user'] = $result_arr;
             header("Location: /index.php");

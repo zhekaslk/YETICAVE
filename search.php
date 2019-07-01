@@ -1,14 +1,11 @@
 <?php
-
+//поиск лотов по названию и описанию
 require_once ("init.php");
 require_once ("functions.php");
 require_once ("data.php");
 session_start();
 
-
-$lot = [];
 $search = $_GET['search'];
-$search = mysqli_real_escape_string($con, $search);
 // запрос на поиск лотов по имени или описанию
 
 if ($search) {
@@ -21,8 +18,7 @@ ORDER BY create_date DESC";
     $result = mysqli_stmt_get_result($stmt);
     $lot = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
-
-var_dump($search);
+//var_dump($search);
 $main_content = templating("templates/search.php", ["lot" => $lot, "category" => $category]);
 $layout_content = templating("templates/layout.php", ["page_name" => "Поиск",  "main_content" => $main_content, "category" => $category]);
 print $layout_content;

@@ -1,5 +1,6 @@
 <?php
 
+//функция шаблонизатор
 function templating($template_route, $template_data) {      ///функция шаблонизации
         if (file_exists($template_route) == false){
             return 'ERROR!!!';
@@ -14,8 +15,9 @@ function templating($template_route, $template_data) {      ///функция ш
         }
     }
 
+///функция форматирования отображения стоимости лота (чтобы было красиво)
 function format_sum($format_sum)
-    {          ///функция форматирования отображения стоимости лота
+    {
     $format_sum = ceil($format_sum);
     if ($format_sum > 1000) {
         $format_sum = number_format($format_sum, 0, ",", " ");
@@ -23,7 +25,8 @@ function format_sum($format_sum)
     return $format_sum." &#8381";
 };
 
-function lot_timer () {             ///функция вывода часов и минут, оставшихся до окончания децствия лота
+///функция вывода часов и минут, оставшихся до окончания действия лота
+function lot_timer () {
     $ts = time();
     $midnight = strtotime("tomorrow");
     $secs_to_midnight = $midnight - $ts;
@@ -32,6 +35,7 @@ function lot_timer () {             ///функция вывода часов и
     return "$hours:$minutes";
 }
 
+// уже готовая функция приведения введенных данных к безопасному виду
 function db_get_prepare_stmt($link, $sql, $data = []) {
     $stmt = mysqli_prepare($link, $sql);
 

@@ -1,16 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: eugene
- * Date: 10.12.18
- * Time: 9:48
- */
-
+//страница отображения лота
 
 require_once "functions.php";
 require_once "data.php";
 session_start();
+
 $lot_id = $_GET['lot_id'];
+//в данном запросе есть косяк с временем до окончания лота
 $sql_lot = "SELECT lot.*,  category.name as category, DATEDIFF(end_date, NOW()) as 'end' FROM lot
 JOIN category ON lot.id_category = category.id
 WHERE lot.id = '$lot_id'";
@@ -25,7 +21,7 @@ else {
     $error = mysqli_error($con);
 }
 
-
+//слок отображения истории торгов (все ставки к данному лоту)
 $sql_rate_list = "SELECT bet, DATE_FORMAT(rate.date, '%d.%m.%y в %H:%i') as 'date_add', users.name FROM rate, users WHERE rate.id_lot = $lot_id AND rate.id_user = users.id ORDER BY rate.date DESC";
 $result = mysqli_query($con, $sql_rate_list);
 if ($result) {
@@ -54,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $add_rate = $_POST;
     $errors = [];
-    //проверка на заполненность и правильность ввода ставки
+    //проверка на авторизацию, заполненность и правильность ввода ставки
     if (!isset($_SESSION["user"])) {
         $errors["auth"] = "Зарегайся, падла";
     }
@@ -65,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         else if (!filter_var($add_rate['cost'], FILTER_VALIDATE_INT) OR $add_rate['cost']<= $lot['price'] + $lot['step']) {
             $errors["cost"] = 'Cделай нормальную ставку, кретин!';
         }
-        //валидация данных
+        //валидация данных, добавление даннх в базу и обновление цены лота объединены в транзакцию
         if (empty($errors)) {
             mysqli_query($con, "START TRANSACTION");
             $sql = "INSERT INTO rate (date, bet, id_lot, id_user) VALUES (NOW(), ?, ?, ?)";
@@ -94,5 +90,5 @@ else {
     $main_content = templating("templates/lot.php", ["lot" => $lot, "rates" => $rates]);
 }
 $layout_content = templating("templates/layout.php", ["page_name" => "Лоты", "main_content" => $main_content, "category" => $category]);
-var_dump($lot);
+//var_dump($lot);
 print $layout_content;
