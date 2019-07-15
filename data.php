@@ -1,5 +1,6 @@
 <?php
 require_once "init.php";
+require_once "vendor/autoload.php";
 
 //получение из базы списка категорий
 $sql_category = "SELECT id, name FROM category;";

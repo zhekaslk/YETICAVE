@@ -1,5 +1,6 @@
 <?php
 //страница со списком посещенных страниц
+require_once "vendor/autoload.php";
 require_once "functions.php";
 require_once "data.php";
 require_once "init.php";

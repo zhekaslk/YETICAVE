@@ -1,5 +1,6 @@
 <?php
 //поиск лотов по названию и описанию
+require_once "vendor/autoload.php";
 require_once ("init.php");
 require_once ("functions.php");
 require_once ("data.php");
@@ -18,7 +19,7 @@ ORDER BY create_date DESC";
     $result = mysqli_stmt_get_result($stmt);
     $lot = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
-//var_dump($search);
+//var_dump($lot);
 $main_content = templating("templates/search.php", ["lot" => $lot, "category" => $category]);
 $layout_content = templating("templates/layout.php", ["page_name" => "Поиск",  "main_content" => $main_content, "category" => $category]);
 print $layout_content;

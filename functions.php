@@ -1,5 +1,5 @@
 <?php
-
+require_once "vendor/autoload.php";
 //функция шаблонизатор
 function templating($template_route, $template_data) {      ///функция шаблонизации
         if (file_exists($template_route) == false){

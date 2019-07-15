@@ -1,5 +1,6 @@
 <?php
 //страница регистрации
+require_once "vendor/autoload.php";
 require_once "functions.php";
 require_once "data.php";
 require_once "init.php";
@@ -73,7 +74,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 else {
     $main_content = templating("templates/sign-up.php", ['category' => $category]);
 }
-var_dump($category);
 $layout_content = templating("templates/layout.php", ["page_name" => "", "main_content" => $main_content, "category" => $category]);
 print $layout_content;
 

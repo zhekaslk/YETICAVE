@@ -1,6 +1,8 @@
 <?php
 //совственно подключение к базе
 require_once 'functions.php';
+require_once "vendor/autoload.php";
+
 $host = "localhost";
 $user = "phpmyadmin";
 $password = "seaways17";

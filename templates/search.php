@@ -10,7 +10,7 @@
     </nav>
     <div class="container">
         <section class="lots">
-            <? if (!$_GET['search'] OR isset($lot)) { ?>
+            <? if (!$_GET['search'] OR !$lot) { ?>
             <h2>По вашему запросу ничего не найдено</h2>
         </section>
             <? }
