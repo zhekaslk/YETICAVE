@@ -28,8 +28,8 @@ SELECT * FROM rate WHERE rate.id_lot = 1 ORDER BY rate.date DESC
 
 -- поиск всех лотов без победителей и постедних ставок к этим лотам
 
-SELECT * FROM lot, rate
-   JOIN (SELECT MAX(rate.id) as last_rate FROM rate
+SELECT users.name, users.email, lot.name as lotname, price, rate.id_user, rate.id_lot FROM users, lot, rate
+  JOIN (SELECT MAX(rate.id) as last_rate FROM rate
   GROUP BY rate.id_lot) AS l ON rate.id = l.last_rate
-WHERE lot.end_date <= NOW() AND lot.id_winner IS NULL AND rate.id_lot = lot.id AND rate.id_lot = lot.id
+WHERE lot.end_date <= NOW() AND lot.id_winner IS NULL AND rate.id_lot = lot.id AND rate.id_lot = lot.id AND users.id = rate.id_user
 
