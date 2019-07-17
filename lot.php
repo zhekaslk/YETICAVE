@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         if (empty($add_rate['cost'])) {
             $errors['cost'] = 'Это поле надо заполнить, падла!';
         }
-        else if (!filter_var($add_rate['cost'], FILTER_VALIDATE_INT) OR $add_rate['cost']<= $lot['price'] + $lot['step']) {
+        else if (!filter_var($add_rate['cost'], FILTER_VALIDATE_INT) OR $add_rate['cost'] < $lot['price'] + $lot['step']) {
             $errors["cost"] = 'Cделай нормальную ставку, кретин!';
         }
         //валидация данных, добавление даннх в базу и обновление цены лота объединены в транзакцию

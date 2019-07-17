@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Июл 01 2019 г., 01:45
+-- Время создания: Июл 17 2019 г., 05:05
 -- Версия сервера: 8.0.16
 -- Версия PHP: 7.2.19-0ubuntu0.18.04.1
 
@@ -52,7 +52,7 @@ INSERT INTO `category` (`id`, `name`) VALUES
 CREATE TABLE `lot` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'наименование лота',
-  `message` text COLLATE utf8mb4_general_ci COMMENT 'описание лота',
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT 'описание лота',
   `img` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `price` int(11) DEFAULT NULL COMMENT 'начальная цена',
   `step` int(11) DEFAULT NULL COMMENT 'шаг ставки',
@@ -69,13 +69,14 @@ CREATE TABLE `lot` (
 --
 
 INSERT INTO `lot` (`id`, `name`, `message`, `img`, `price`, `step`, `fav_count`, `create_date`, `end_date`, `id_category`, `id_author`, `id_winner`) VALUES
-(1, '2014 Rossingol District Snowboard', '', 'img/lot-1.jpg', 25000, 1000, NULL, '2019-04-07', '2019-07-27', 1, 1, NULL),
-(2, 'DC Ply Mens 2016/2017 Snowboard', 'Сноу агонь!', 'img/lot-2.jpg', 159999, 1000, NULL, '2019-05-30', '2019-06-30', 1, 4, NULL),
-(3, 'Крепления Union Contact Pro 2015 года размер L/XL', 'Крепления что надо!', 'img/lot-3.jpg', 8000, 500, NULL, '2019-05-28', '2019-06-30', 2, 4, NULL),
-(4, 'Ботинки для сноуборда DC Mutiny Charocal', 'Боты как на тебя шили!', 'img/lot-4.jpg', 10999, 1001, NULL, '2019-05-07', '2019-06-28', 3, 4, NULL),
-(5, 'Куртка для сноуборда DC Mutiny Charocal', 'Курточка для мужика!', 'img/lot-5.jpg', 7500, 500, NULL, '2019-05-01', '2019-06-29', 4, 4, NULL),
+(1, '2014 Rossingol District Snowboard', '', 'img/lot-1.jpg', 25000, 1000, 300, '2019-06-27', '2019-06-14', 1, 1, 2),
+(2, 'DC Ply Mens 2016/2017 Snowboard', 'Сноу агонь!', 'img/lot-2.jpg', 222222, 1000, NULL, '2019-05-30', '2019-06-30', 1, 4, 24),
+(3, 'Крепления Union Contact Pro 2015 года размер L/XL', 'Крепления что надо!', 'img/lot-3.jpg', 25000, 500, NULL, '2019-05-28', '2019-08-31', 2, 4, NULL),
+(4, 'Ботинки для сноуборда DC Mutiny Charocal', 'Боты как на тебя шили! 2015', 'img/lot-4.jpg', 13000, 1001, NULL, '2019-05-07', '2019-08-24', 3, 4, NULL),
+(5, 'Куртка для сноуборда DC Mutiny Charocal', 'Курточка для мужика!', 'img/lot-5.jpg', 8001, 500, NULL, '2019-05-01', '2019-08-24', 4, 4, NULL),
 (6, 'Маска Oakley Kanopu', 'Маска как на маскарад!', 'img/lot-6.jpg', 5400, 300, NULL, '2019-05-10', '2019-07-27', 6, 4, NULL),
-(10, 'Кал', '3', 'img/tmp/phpdsUCxG', 130, 1, NULL, '2019-06-20', '2019-06-30', 3, 24, NULL);
+(10, 'Кал', '3', 'img/tmp/phpdsUCxG', 10000, 1, NULL, '2019-06-20', '2019-08-31', 3, 3, NULL),
+(11, 'Кабанчик', 'Кабанчик конечно не лыжи, но тоже продается', 'img/tmp/phpW8OG5m', 10000, 2000, NULL, '2019-07-01', '2019-10-31', 6, 24, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,17 @@ INSERT INTO `rate` (`id`, `date`, `bet`, `id_lot`, `id_user`) VALUES
 (10, '2019-06-24 11:27:47', 130, 10, 24),
 (11, '2019-06-24 13:13:05', 15000, 1, 24),
 (12, '2019-06-24 13:17:23', 20000, 1, 24),
-(13, '2019-06-24 13:18:37', 25000, 1, 24);
+(13, '2019-06-24 13:18:37', 25000, 1, 24),
+(14, '2019-07-13 03:31:21', 2000, 10, 24),
+(15, '2019-07-13 04:24:29', 199999, 2, 24),
+(16, '2019-07-13 04:24:45', 11111, 3, 24),
+(17, '2019-07-13 04:27:02', 2222, 10, 24),
+(18, '2019-07-13 05:51:16', 10000, 10, 24),
+(19, '2019-07-17 00:44:20', 222222, 2, 24),
+(20, '2019-07-17 00:45:02', 25000, 3, 24),
+(21, '2019-07-17 02:18:54', 13000, 4, 24),
+(22, '2019-07-17 02:22:13', 8001, 5, 24),
+(23, '2019-06-25 00:00:00', 33333, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -128,11 +139,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`, `contact`, `reg_date`) VALUES
-(1, 'Иван', 'ivan@gmail.com', 'qwest12345', NULL, NULL, '2019-04-01'),
-(2, 'Игнат', 'ignat.v@gmail.com', '$2y$10$OqvsKHQwr0Wk6FMZDoHo1uHoXd4UdxJG/5UDtUiie00XaxMHrW8ka', NULL, NULL, '2019-06-01'),
-(3, 'Леночка', 'kitty_93@li.ru', '$2y$10$bWtSjUhwgggtxrnJ7rxmIe63ABubHQs0AS0hgnOo41IEdMHkYoSVa', NULL, NULL, NULL),
-(4, 'Руслан', 'warrior07@mail.ru', '2y$10$2OxpEH7narYpkOT1H5cApezuzh10tZEEQ2axgFOaKW.55LxIJBgWW', NULL, NULL, NULL),
-(24, 'Евгений', 'zheka.slk2010@gmail.com', '$2y$10$96rNJbH7mNfn2sETtLTXxekEsKM5ndZ/tTFb..aFT0RQ5YORxkBQG', 'img/tmp/phpKg4Wjn', 'никак', '2019-06-18');
+(1, 'Иван', 'ivan@gmail.com', 'qwest12345', NULL, '1212fdgrgtrt не звоните черти', '2019-04-01'),
+(2, 'Игнат', 'ignat.v@gmail.com', '$2y$10$OqvsKHQwr0Wk6FMZDoHo1uHoXd4UdxJG/5UDtUiie00XaxMHrW8ka', NULL, 'телефон 0222200022222 скайп chernozhop', '2019-06-01'),
+(3, 'Леночка', 'kitty_93@li.ru', '$2y$10$bWtSjUhwgggtxrnJ7rxmIe63ABubHQs0AS0hgnOo41IEdMHkYoSVa', NULL, 'телефон 02787878 скайп chernozhop1', NULL),
+(4, 'Руслан', 'warrior07@mail.ru', '2y$10$2OxpEH7narYpkOT1H5cApezuzh10tZEEQ2axgFOaKW.55LxIJBgWW', NULL, 'телефон 0222 скайп urexeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', NULL),
+(24, 'Евгений', 'zheka.slk2010@gmail.com', '$2y$10$96rNJbH7mNfn2sETtLTXxekEsKM5ndZ/tTFb..aFT0RQ5YORxkBQG', 'img/tmp/phpKg4Wjn', 'телефон 9979997 скайп vizitor', '2019-06-18');
 
 --
 -- Индексы сохранённых таблиц
@@ -192,12 +203,12 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `lot`
 --
 ALTER TABLE `lot`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT для таблицы `rate`
 --
 ALTER TABLE `rate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
