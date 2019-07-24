@@ -26,15 +26,13 @@ function format_sum($format_sum)
 };
 
 ///функция вывода часов и минут, оставшихся до окончания действия лота
-function lot_timer () {
-    $ts = time();
-    $midnight = strtotime("tomorrow");
-    $secs_to_midnight = $midnight - $ts;
-    $hours = floor($secs_to_midnight/3600);
-    $minutes = floor(($secs_to_midnight % 3600)/60);
-    return "$hours:$minutes";
-}
+function lot_timer ($seconds_to) {
+    $m = floor(($seconds_to%3600)/60);
+    $h = floor(($seconds_to%86400)/3600);
+    $d = floor(($seconds_to%2592000)/86400);
+    return $d."д ".$h."ч ".$m."мин";
 
+}
 // уже готовая функция приведения введенных данных к безопасному виду
 function db_get_prepare_stmt($link, $sql, $data = []) {
     $stmt = mysqli_prepare($link, $sql);
@@ -69,5 +67,30 @@ function db_get_prepare_stmt($link, $sql, $data = []) {
 
     return $stmt;
 }
+
+//функция для проверки статуса лота (завершен, завершен и выигран пользователем или не завершен), добавляет стили для вывода информации
+function check_lot_status ($lot) {
+    $i = 0;
+    foreach ($lot as $item) {
+        if ($item["state"] == 1) {
+            $lot[$i]["rate_style"] = "rates__item--win";
+            $lot[$i]["timer_style"] = "timer--win";
+            $lot[$i]["timer_status"] = "Ставка выиграла";
+        }
+        if ($item["state"] == 2) {
+            $lot[$i]["rate_style"] = "rates__item--end";
+            $lot[$i]["timer_style"] = "timer--end";
+            $lot[$i]["timer_status"] = "Торги окончены";
+        }
+        if ($item["state"] == 3) {
+            $lot[$i]["rate_style"] = "";
+            $lot[$i]["timer_style"] = "timer--finishing";
+            $lot[$i]["timer_status"] = lot_timer($item["timediff"]);
+        }
+        $i++;
+    }
+    return $lot;
+}
+
 
 

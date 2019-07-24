@@ -6,13 +6,14 @@ require_once "data.php";
 session_start();
 
 $lot_id = $_GET['lot_id'];
-//в данном запросе есть косяк с временем до окончания лота
-$sql_lot = "SELECT lot.*,  category.name as category, DATEDIFF(end_date, NOW()) as 'end' FROM lot
+
+$sql_lot = "SELECT lot.*,  category.name as category, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff FROM lot
 JOIN category ON lot.id_category = category.id
 WHERE lot.id = '$lot_id'";
 $result = mysqli_query($con, $sql_lot);
 if ($result) {
     $lot = mysqli_fetch_assoc($result);
+    $lot["timediff"] = lot_timer($lot["timediff"]);
     if(empty($lot)) {
         return http_response_code(404);
     }
@@ -90,5 +91,5 @@ else {
     $main_content = templating("templates/lot.php", ["lot" => $lot, "rates" => $rates]);
 }
 $layout_content = templating("templates/layout.php", ["page_name" => "Лоты", "main_content" => $main_content, "category" => $category]);
-//var_dump($lot);
+var_dump($lot);
 print $layout_content;

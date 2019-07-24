@@ -8,7 +8,7 @@ require_once "getwinner.php";
 session_start();
 
 //получение списка лотов, актуальных на данный момент
-$sql_lots = "SELECT lot.id, lot.name, price, img, create_date, COUNT(rate.id), category.name as category FROM lot
+$sql_lots = "SELECT lot.id, lot.name, price, img, create_date, COUNT(rate.id), category.name as category, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff FROM lot
 LEFT JOIN rate ON rate.id_lot = lot.id
 JOIN category ON lot.id_category = category.id
 WHERE end_date > NOW()

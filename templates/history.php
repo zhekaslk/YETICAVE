@@ -26,8 +26,8 @@
                                 <span class="lot__amount">Стартовая цена</span>
                                 <span class="lot__cost"><?=format_sum($value['price']);?></span>
                             </div>
-                            <div class="lot__timer timer">
-                                <?=lot_timer(); ?>
+                            <div class="lot__timer timer <?=$value["timer_style"]; ?>">
+                                <?=$value["timer_status"]; ?>
                             </div>
                         </div>
                     </div>

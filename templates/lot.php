@@ -9,10 +9,10 @@
             <p class="lot-item__description"><?= $lot['message']?></p>
         </div>
         <div class="lot-item__right">
-            <? if (isset($_SESSION["user"]) AND $_SESSION["user"]["id"] != $lot["id_author"]) {  ?>
+            <? if (isset($_SESSION["user"]) AND $_SESSION["user"]["id"] != $lot["id_author"] AND $lot["timediff"] > 0) {  ?>
             <div class="lot-item__state">
                 <div class="lot-item__timer timer">
-                    <?=$lot["end"]; ?>
+                    <?=$lot["timediff"]; ?>
                 </div>
                 <div class="lot-item__  cost-state">
                     <div class="lot-item__rate">
