@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Июл 17 2019 г., 05:05
+-- Время создания: Июл 25 2019 г., 01:47
 -- Версия сервера: 8.0.16
 -- Версия PHP: 7.2.19-0ubuntu0.18.04.1
 
@@ -58,7 +58,7 @@ CREATE TABLE `lot` (
   `step` int(11) DEFAULT NULL COMMENT 'шаг ставки',
   `fav_count` int(11) DEFAULT NULL COMMENT 'кол-во добавлений в избранное',
   `create_date` date DEFAULT NULL COMMENT 'дата создания лота',
-  `end_date` date DEFAULT NULL COMMENT 'дата завершения торгов по лоту',
+  `end_date` datetime DEFAULT NULL COMMENT 'дата завершения торгов по лоту',
   `id_category` int(11) DEFAULT NULL,
   `id_author` int(11) NOT NULL,
   `id_winner` int(11) DEFAULT NULL
@@ -69,14 +69,14 @@ CREATE TABLE `lot` (
 --
 
 INSERT INTO `lot` (`id`, `name`, `message`, `img`, `price`, `step`, `fav_count`, `create_date`, `end_date`, `id_category`, `id_author`, `id_winner`) VALUES
-(1, '2014 Rossingol District Snowboard', '', 'img/lot-1.jpg', 25000, 1000, 300, '2019-06-27', '2019-06-14', 1, 1, 2),
-(2, 'DC Ply Mens 2016/2017 Snowboard', 'Сноу агонь!', 'img/lot-2.jpg', 222222, 1000, NULL, '2019-05-30', '2019-06-30', 1, 4, 24),
-(3, 'Крепления Union Contact Pro 2015 года размер L/XL', 'Крепления что надо!', 'img/lot-3.jpg', 25000, 500, NULL, '2019-05-28', '2019-08-31', 2, 4, NULL),
-(4, 'Ботинки для сноуборда DC Mutiny Charocal', 'Боты как на тебя шили! 2015', 'img/lot-4.jpg', 13000, 1001, NULL, '2019-05-07', '2019-08-24', 3, 4, NULL),
-(5, 'Куртка для сноуборда DC Mutiny Charocal', 'Курточка для мужика!', 'img/lot-5.jpg', 8001, 500, NULL, '2019-05-01', '2019-08-24', 4, 4, NULL),
-(6, 'Маска Oakley Kanopu', 'Маска как на маскарад!', 'img/lot-6.jpg', 5400, 300, NULL, '2019-05-10', '2019-07-27', 6, 4, NULL),
-(10, 'Кал', '3', 'img/tmp/phpdsUCxG', 10000, 1, NULL, '2019-06-20', '2019-08-31', 3, 3, NULL),
-(11, 'Кабанчик', 'Кабанчик конечно не лыжи, но тоже продается', 'img/tmp/phpW8OG5m', 10000, 2000, NULL, '2019-07-01', '2019-10-31', 6, 24, NULL);
+(1, '2014 Rossingol District Snowboard', '', 'img/lot-1.jpg', 25000, 1000, 300, '2019-06-27', '2019-06-14 00:00:00', 1, 1, 2),
+(2, 'DC Ply Mens 2016/2017 Snowboard', 'Сноу агонь!', 'img/lot-2.jpg', 222222, 1000, NULL, '2019-05-30', '2019-06-30 00:00:00', 1, 4, 24),
+(3, 'Крепления Union Contact Pro 2015 года размер L/XL', 'Крепления что надо!', 'img/lot-3.jpg', 25000, 500, NULL, '2019-05-28', '2019-08-31 00:00:00', 2, 4, NULL),
+(4, 'Ботинки для сноуборда DC Mutiny Charocal', 'Боты как на тебя шили! 2015', 'img/lot-4.jpg', 13000, 1001, NULL, '2019-05-07', '2019-08-24 00:00:00', 3, 4, NULL),
+(5, 'Куртка для сноуборда DC Mutiny Charocal', 'Курточка для мужика!', 'img/lot-5.jpg', 8001, 500, NULL, '2019-05-01', '2019-07-25 00:00:00', 4, 4, 24),
+(6, 'Маска Oakley Kanopu', 'Маска как на маскарад!', 'img/lot-6.jpg', 5400, 300, NULL, '2019-05-10', '2019-07-27 00:00:00', 6, 4, NULL),
+(10, 'Кал', '3', 'img/tmp/phpdsUCxG', 10000, 1, NULL, '2019-06-20', '2019-08-31 00:00:00', 3, 3, NULL),
+(11, 'Кабанчик', 'Кабанчик конечно не лыжи, но тоже продается', 'img/tmp/phpW8OG5m', 10000, 2000, NULL, '2019-07-01', '2019-10-31 00:00:00', 6, 24, NULL);
 
 -- --------------------------------------------------------
 
