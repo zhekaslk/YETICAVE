@@ -6,7 +6,6 @@ require_once "data.php";
 session_start();
 
 $lot_id = $_GET['lot_id'];
-
 $sql_lot = "SELECT lot.*,  category.name as category, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff FROM lot
 JOIN category ON lot.id_category = category.id
 WHERE lot.id = '$lot_id'";
@@ -21,7 +20,6 @@ if ($result) {
 else {
     $error = mysqli_error($con);
 }
-
 //слок отображения истории торгов (все ставки к данному лоту)
 $sql_rate_list = "SELECT bet, DATE_FORMAT(rate.date, '%d.%m.%y в %H:%i') as 'date_add', users.name FROM rate, users WHERE rate.id_lot = $lot_id AND rate.id_user = users.id ORDER BY rate.date DESC";
 $result = mysqli_query($con, $sql_rate_list);
@@ -31,7 +29,6 @@ if ($result) {
 else {
     $error = mysqli_error($con);
 }
-
 /////// запись в куки id посещенных страниц
 $expire = strtotime("+30 days");
 $counter_name = "history";
@@ -45,10 +42,8 @@ if (isset($_COOKIE['history'])) {
 }
 setcookie($counter_name, json_encode($counter_value), $expire, $path);
 
-
-
+//форма добавления ставки
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
     $add_rate = $_POST;
     $errors = [];
     //проверка на авторизацию, заполненность и правильность ввода ставки
@@ -87,9 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 }
 else {
-
     $main_content = templating("templates/lot.php", ["lot" => $lot, "rates" => $rates]);
 }
 $layout_content = templating("templates/layout.php", ["page_name" => "Лоты", "main_content" => $main_content, "category" => $category]);
-var_dump($lot);
+//var_dump($lot);
 print $layout_content;

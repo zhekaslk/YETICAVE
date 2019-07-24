@@ -16,7 +16,7 @@
         </a>
         <form class="main-header__search" method="get" action="search.php">
             <input type="search" name="search" placeholder="Поиск лота" value="<? isset($_GET['search']) ? print $_GET['search'] : ""?>">
-            <input class="main-header__search-btn" type="submit" name="find" value="Найти">
+            <input class="main-header__search-btn" type="submit">
         </form>
             <? if (isset($_SESSION["user"])) {  ?>
         <a class="main-header__add-lot button" href="/add.php">Добавить лот</a>

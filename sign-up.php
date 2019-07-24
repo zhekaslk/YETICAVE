@@ -8,7 +8,6 @@ require_once "init.php";
 //session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
     $sign_up = $_POST;
     $errors = [];
     $required = ["email", "password", "message", "name"];
@@ -74,6 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 else {
     $main_content = templating("templates/sign-up.php", ['category' => $category]);
 }
-$layout_content = templating("templates/layout.php", ["page_name" => "", "main_content" => $main_content, "category" => $category]);
+$layout_content = templating("templates/layout.php", ["page_name" => "Регистрация", "main_content" => $main_content, "category" => $category]);
 print $layout_content;
 

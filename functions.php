@@ -1,6 +1,14 @@
 <?php
 require_once "vendor/autoload.php";
-//функция шаблонизатор
+
+/**
+ * Функция шаблонизатор
+ *
+ * @param $template_route Шаблон
+ * @param $template_data Данные для шаблона
+ *
+ * @return template Готовый контент
+ */
 function templating($template_route, $template_data) {      ///функция шаблонизации
         if (file_exists($template_route) == false){
             return 'ERROR!!!';
@@ -15,7 +23,13 @@ function templating($template_route, $template_data) {      ///функция ш
         }
     }
 
-///функция форматирования отображения стоимости лота (чтобы было красиво)
+/**
+ * Функция форматирования отображения стоимости лота (чтобы было по-красоте)
+ *
+ * @param $format_sum Сумма которую нужно сделать красивой, т.е. отделить пробелом каждый порядок и добавить знак рубля *
+ *
+ * @return format_sum Красивое число со знаком рубля
+ */
 function format_sum($format_sum)
     {
     $format_sum = ceil($format_sum);
@@ -25,15 +39,29 @@ function format_sum($format_sum)
     return $format_sum." &#8381";
 };
 
-///функция вывода часов и минут, оставшихся до окончания действия лота
+/**
+ * Функция вывода дней, часов и минут, оставшихся до окончания действия лота
+ *
+ * @param $seconds_to Количество секунд до окончания лота
+ *
+ * @return Дни, часы и минуты до окончания
+ */
 function lot_timer ($seconds_to) {
     $m = floor(($seconds_to%3600)/60);
     $h = floor(($seconds_to%86400)/3600);
     $d = floor(($seconds_to%2592000)/86400);
     return $d."д ".$h."ч ".$m."мин";
-
 }
-// уже готовая функция приведения введенных данных к безопасному виду
+
+/**
+ * Создает подготовленное выражение на основе готового SQL запроса и переданных данных
+ *
+ * @param $link mysqli Ресурс соединения
+ * @param $sql string SQL запрос с плейсхолдерами вместо значений
+ * @param array $data Данные для вставки на место плейсхолдеров
+ *
+ * @return mysqli_stmt Подготовленное выражение
+ */
 function db_get_prepare_stmt($link, $sql, $data = []) {
     $stmt = mysqli_prepare($link, $sql);
 
@@ -68,7 +96,14 @@ function db_get_prepare_stmt($link, $sql, $data = []) {
     return $stmt;
 }
 
-//функция для проверки статуса лота (завершен, завершен и выигран пользователем или не завершен), добавляет стили для вывода информации
+/**
+ * Функция для проверки статуса лота (завершен, завершен и выигран пользователем или не завершен), добавляет стили для вывода информации
+ *
+ * @param $lot Массив с лотами
+ *
+ * @return lot Массив с лотами, к которому в соответствии с его статусом были добавлены сообщения и стили для отображения
+ */
+//
 function check_lot_status ($lot) {
     $i = 0;
     foreach ($lot as $item) {
