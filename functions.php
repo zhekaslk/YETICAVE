@@ -61,6 +61,7 @@ function lot_timer ($seconds_to) {
  * @param array $data Данные для вставки на место плейсхолдеров
  *
  * @return mysqli_stmt Подготовленное выражение
+ * @deprecated используются фунции PDO
  */
 function db_get_prepare_stmt($link, $sql, $data = []) {
     $stmt = mysqli_prepare($link, $sql);

@@ -8,27 +8,22 @@ session_start();
 $lot_id = $_GET['lot_id'];
 $sql_lot = "SELECT lot.*,  category.name as category, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff FROM lot
 JOIN category ON lot.id_category = category.id
-WHERE lot.id = '$lot_id'";
-$result = mysqli_query($con, $sql_lot);
-if ($result) {
-    $lot = mysqli_fetch_assoc($result);
-    $lot["timediff"] = lot_timer($lot["timediff"]);
-    if(empty($lot)) {
-        return http_response_code(404);
-    }
+WHERE lot.id = ?";
+$stmt = $pdo->prepare($sql_lot);
+$stmt->execute([$lot_id]);
+$lot = $stmt->fetch();
+if(empty($lot)) {
+    return http_response_code(404);
 }
 else {
-    $error = mysqli_error($con);
+    $lot["timediff"] = lot_timer($lot["timediff"]);
 }
 //слок отображения истории торгов (все ставки к данному лоту)
-$sql_rate_list = "SELECT bet, DATE_FORMAT(rate.date, '%d.%m.%y в %H:%i') as 'date_add', users.name FROM rate, users WHERE rate.id_lot = $lot_id AND rate.id_user = users.id ORDER BY rate.date DESC";
-$result = mysqli_query($con, $sql_rate_list);
-if ($result) {
-    $rates = mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
-else {
-    $error = mysqli_error($con);
-}
+$sql_rate_list = "SELECT bet, DATE_FORMAT(rate.date, '%d.%m.%y в %H:%i') as 'date_add', users.name FROM rate, users WHERE rate.id_lot = ? AND rate.id_user = users.id ORDER BY rate.date DESC";
+$stmt = $pdo->prepare($sql_rate_list);
+$stmt->execute([$lot_id]);
+$rates = $stmt->fetchAll();
+
 /////// запись в куки id посещенных страниц
 $expire = strtotime("+30 days");
 $counter_name = "history";
@@ -57,28 +52,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         else if (!filter_var($add_rate['cost'], FILTER_VALIDATE_INT) OR $add_rate['cost'] < $lot['price'] + $lot['step']) {
             $errors["cost"] = 'Cделай нормальную ставку, кретин!';
         }
-        //валидация данных, добавление даннх в базу и обновление цены лота объединены в транзакцию
-        if (empty($errors)) {
-            mysqli_query($con, "START TRANSACTION");
-            $sql = "INSERT INTO rate (date, bet, id_lot, id_user) VALUES (NOW(), ?, ?, ?)";
-            $sql1 = "UPDATE lot SET price = ? WHERE lot.id = ?";
-            $stmt = db_get_prepare_stmt($con, $sql, [$add_rate['cost'], $lot_id , $_SESSION["user"]["id"]]);
-            $stmt1 = db_get_prepare_stmt($con, $sql1, [$add_rate['cost'], $lot_id ]);
-            $result = mysqli_stmt_execute($stmt);
-            $result1 = mysqli_stmt_execute($stmt1);
-            if ($result AND $result1) {
-                mysqli_query($con, "COMMIT");
-                header("Location: lot.php?lot_id=" . $lot_id);
-                exit();
-            }
-            else {
-                mysqli_query($con, "ROLLBACK");
-                //error;
-            }
-        }
+
     }
     if (count($errors)) {
         $main_content = templating("templates/lot.php", ['category' => $category, 'errors' => $errors, "lot" => $lot, "rates" => $rates]);
+    }
+    else {
+        //валидация данных, добавление даннх в базу и обновление цены лота объединены в транзакцию
+        if (empty($errors)) {
+            try {
+                $pdo -> setAttribute ( PDO :: ATTR_ERRMODE , PDO :: ERRMODE_EXCEPTION );
+                $pdo->beginTransaction();
+                $sql_ins_rate = "INSERT INTO rate (date, bet, id_lot, id_user) VALUES (NOW(), ?, ?, ?)";
+                $sql_upd_price = "UPDATE lot SET price = ? WHERE lot.id = ?";
+                $stmt = $pdo->prepare($sql_ins_rate);
+                $stmt->execute([$add_rate['cost'], $lot_id , $_SESSION["user"]["id"]]);
+                $stmt = $pdo->prepare($sql_upd_price);
+                $stmt->execute([$add_rate['cost'], $lot_id ]);
+                $pdo->commit();
+                header("Location: lot.php?lot_id=" . $lot_id);
+                exit();
+            }
+            catch (PDOException $e) {
+                $pdo->rollback();
+                header("Location: lot.php?lot_id=" . $lot_id);
+                exit();
+            }
+        }
     }
 }
 else {

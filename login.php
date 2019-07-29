@@ -19,11 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     //валидация введенных данных
     if (empty($errors)) {
-        $email = mysqli_real_escape_string($con, $auth["email"]);
-        $sql = "SELECT id, email, password, name, avatar FROM users WHERE email = '$email'";
-        $result = mysqli_query($con, $sql);
-        if (mysqli_num_rows($result) != 0) {
-            $result_arr = mysqli_fetch_assoc($result);
+        $sql = "SELECT id, email, password, name, avatar FROM users WHERE email = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$auth["email"]]);
+        if ($stmt->rowCount() != 0) {
+            $result_arr = $stmt->fetch();
             if (!password_verify($auth["password"], $result_arr["password"])) {
                 $errors['auth'] = 'Вы ввели неверный логин/пароль';
             }

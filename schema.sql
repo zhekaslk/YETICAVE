@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Июл 25 2019 г., 01:47
--- Версия сервера: 8.0.16
+-- Время создания: Июл 29 2019 г., 05:10
+-- Версия сервера: 8.0.17
 -- Версия PHP: 7.2.19-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -75,8 +75,9 @@ INSERT INTO `lot` (`id`, `name`, `message`, `img`, `price`, `step`, `fav_count`,
 (4, 'Ботинки для сноуборда DC Mutiny Charocal', 'Боты как на тебя шили! 2015', 'img/lot-4.jpg', 13000, 1001, NULL, '2019-05-07', '2019-08-24 00:00:00', 3, 4, NULL),
 (5, 'Куртка для сноуборда DC Mutiny Charocal', 'Курточка для мужика!', 'img/lot-5.jpg', 8001, 500, NULL, '2019-05-01', '2019-07-25 00:00:00', 4, 4, 24),
 (6, 'Маска Oakley Kanopu', 'Маска как на маскарад!', 'img/lot-6.jpg', 5400, 300, NULL, '2019-05-10', '2019-07-27 00:00:00', 6, 4, NULL),
-(10, 'Кал', '3', 'img/tmp/phpdsUCxG', 10000, 1, NULL, '2019-06-20', '2019-08-31 00:00:00', 3, 3, NULL),
-(11, 'Кабанчик', 'Кабанчик конечно не лыжи, но тоже продается', 'img/tmp/phpW8OG5m', 10000, 2000, NULL, '2019-07-01', '2019-10-31 00:00:00', 6, 24, NULL);
+(10, 'Кал', '3', 'img/tmp/phpdsUCxG', 15002, 1, NULL, '2019-06-20', '2019-08-31 00:00:00', 3, 3, NULL),
+(11, 'Кабанчик', 'Кабанчик конечно не лыжи, но тоже продается', 'img/tmp/phpW8OG5m', 10000, 2000, NULL, '2019-07-01', '2019-10-31 00:00:00', 6, 24, NULL),
+(12, 'Топор', 'Топор что надо!', 'img/tmp/phpzkYwxv', 500, 200, NULL, '2019-07-29', '2019-08-31 00:00:00', 5, 24, NULL);
 
 -- --------------------------------------------------------
 
@@ -116,7 +117,9 @@ INSERT INTO `rate` (`id`, `date`, `bet`, `id_lot`, `id_user`) VALUES
 (20, '2019-07-17 00:45:02', 25000, 3, 24),
 (21, '2019-07-17 02:18:54', 13000, 4, 24),
 (22, '2019-07-17 02:22:13', 8001, 5, 24),
-(23, '2019-06-25 00:00:00', 33333, 1, 2);
+(23, '2019-06-25 00:00:00', 33333, 1, 2),
+(24, '2019-07-29 03:27:33', 15000, 10, 24),
+(25, '2019-07-29 03:35:29', 15002, 10, 24);
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`, `contact`, `re
 (2, 'Игнат', 'ignat.v@gmail.com', '$2y$10$OqvsKHQwr0Wk6FMZDoHo1uHoXd4UdxJG/5UDtUiie00XaxMHrW8ka', NULL, 'телефон 0222200022222 скайп chernozhop', '2019-06-01'),
 (3, 'Леночка', 'kitty_93@li.ru', '$2y$10$bWtSjUhwgggtxrnJ7rxmIe63ABubHQs0AS0hgnOo41IEdMHkYoSVa', NULL, 'телефон 02787878 скайп chernozhop1', NULL),
 (4, 'Руслан', 'warrior07@mail.ru', '2y$10$2OxpEH7narYpkOT1H5cApezuzh10tZEEQ2axgFOaKW.55LxIJBgWW', NULL, 'телефон 0222 скайп urexeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', NULL),
-(24, 'Евгений', 'zheka.slk2010@gmail.com', '$2y$10$96rNJbH7mNfn2sETtLTXxekEsKM5ndZ/tTFb..aFT0RQ5YORxkBQG', 'img/tmp/phpKg4Wjn', 'телефон 9979997 скайп vizitor', '2019-06-18');
+(24, 'Евгений', 'zheka.slk2010@gmail.com', '$2y$10$96rNJbH7mNfn2sETtLTXxekEsKM5ndZ/tTFb..aFT0RQ5YORxkBQG', 'img/tmp/phpKg4Wjn', 'телефон 9979997 скайп vizitor', '2019-06-18'),
+(25, 'Кабачок', '1@mail.ru', '$2y$10$zOSBs4ZoU81idEPABHxTHeYVOjTpakd3Qfz4HUH7vf/u2r/VnbFD6', 'img/tmp/phpoqSqcs', 'kabachok@mail.ru', '2019-07-29');
 
 --
 -- Индексы сохранённых таблиц
@@ -203,17 +207,17 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `lot`
 --
 ALTER TABLE `lot`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT для таблицы `rate`
 --
 ALTER TABLE `rate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --

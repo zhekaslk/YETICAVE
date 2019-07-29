@@ -17,8 +17,7 @@ END state FROM rate
   JOIN users ON lot.id_author = users.id
   JOIN (SELECT MAX(rate.id) as last_rate FROM rate WHERE rate.id_user = 24 GROUP BY rate.id_lot) as l ON rate.id = last_rate
 ORDER BY rate.date DESC";
-    $result = mysqli_query($con, $sql);
-    $lot = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $lot = $pdo->query($sql)->fetchAll();
     $lot = check_lot_status($lot);
 }
 else {

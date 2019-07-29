@@ -32,10 +32,9 @@ FROM lot
 WHERE MATCH(lot.name, lot.message) AGAINST(?)
 ORDER BY create_date DESC";
     }
-    $stmt = db_get_prepare_stmt($con, $sql, [$search]);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $lot = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$search]);
+    $lot = $stmt->fetchAll();
     $lot = check_lot_status($lot);
 }
 //var_dump($lot);

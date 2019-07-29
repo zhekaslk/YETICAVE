@@ -25,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $errors[$value] = 'Введи нормальное мыло, кретин!';
                 }
                 else {
-                    $email = mysqli_real_escape_string($con, $sign_up["email"]);
-                    $sql = "SELECT email FROM users WHERE email = '$email'";
-                    $result = mysqli_query($con, $sql);
-                    if (mysqli_num_rows($result) != 0) {
+                    $sql = "SELECT email FROM users WHERE email = ? ";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([$sign_up["email"]]);
+                    if ($stmt->rowCount() != 0) {
                         $errors[$value] = 'Такое мыло уже есть, чебурек!!';
                     }
                 }
@@ -52,22 +52,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $main_content = templating("templates/sign-up.php", ['category' => $category, 'errors' => $errors, 'sign_up' => $sign_up] );
     }
     else {
-        $name = mysqli_real_escape_string($con, $sign_up["name"]);
-        $email = mysqli_real_escape_string($con, $sign_up["email"]);
         $pass = password_hash($sign_up["password"], PASSWORD_DEFAULT);
-        $contact = mysqli_real_escape_string($con, $sign_up["message"]);
-        $avatar = $sign_up["avatar"];
-        $sql = "INSERT INTO users (name, email, password, avatar, contact, reg_date) VALUES ('$name', '$email', '$pass', '$avatar', '$contact', CURRENT_DATE())";
-        $result = mysqli_query($con, $sql);
-        if ($result) {
-            header( "Location: /login.php");
-            //echo "Регистрация прошла успешно. Вы будуте перенаправлены на страницу входа, где сможете войти используя свой email и пароль";
-            exit();
-        }
-        else {
-            $errors["base"] = mysqli_connect_error();
-            $main_content = templating("templates/error.php", ['errors' => $errors]);
-        }
+        $sql = "INSERT INTO users (name, email, password, avatar, contact, reg_date) VALUES (?, ?, ?, ?, ?,CURRENT_DATE())";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$sign_up["name"], $sign_up["email"], $pass, $sign_up["message"], $sign_up["avatar"]]);
+        header( "Location: /login.php");
+        //echo "Регистрация прошла успешно. Вы будуте перенаправлены на страницу входа, где сможете войти используя свой email и пароль";
+        exit();
     }
 }
 else {

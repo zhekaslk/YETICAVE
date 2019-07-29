@@ -26,14 +26,15 @@ END state
  FROM lot
   JOIN category ON lot.id_category = category.id WHERE lot.id IN ($lot_id)";
     }
-    $result = mysqli_query($con, $sql);
-    $lot = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $lot = $pdo->query($sql)->fetchAll();
     $lot = check_lot_status($lot);
     $main_content = templating("templates/history.php", ["message" => "История просмотров", "lot" => $lot, "category" => $category]);
 }
 else {
     $main_content = templating("templates/history.php", ["message" => "История просмотров пуста", "category" => $category]);
 }
-var_dump($lot_id);
+//var_dump($lot_id);
+//var_dump($stmt);
 $layout_content = templating("templates/layout.php", ["page_name" => "История просмотров", "main_content" => $main_content, "category" => $category]);
 print $layout_content;

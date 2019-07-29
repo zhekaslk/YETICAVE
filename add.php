@@ -62,21 +62,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     else {
         //костыль для получения id категории которую выбрал юзер
-        $category_id = $add_lot["category"];
-        $sql_category_id = "SELECT id FROM category WHERE name = '$category_id'";
-        $result_category = mysqli_query($con, $sql_category_id);
-        $category_id = mysqli_fetch_assoc($result_category);
-        $id_cat = $category_id['id'];
-        // собственно процесс проверки на безопасность введенных данных и добавление в базу
+        $id_cat = $add_lot["category"];
+        $sql_category_id = "SELECT id FROM category WHERE name = '$id_cat'";
+        $id_cat = $pdo->query($sql_category_id)->fetch();
+        // собственно добавление в базу нового лота
         $sql = "INSERT INTO lot (name, message, img, price, step, create_date, end_date, id_category, id_author) VALUES (?, ?, ?, ?, ?, NOW(), ?, ?, ?)";
-        $stmt = db_get_prepare_stmt($con, $sql, [$add_lot["lot-name"], $add_lot["message"] , $add_lot["picture"], $add_lot["lot-price"], $add_lot["lot-step"],
-            $add_lot["lot-date"], $id_cat, $_SESSION['user']['id']]);
-        $result = mysqli_stmt_execute($stmt);
-        if ($result) {
-            $lot_id = mysqli_insert_id($con);
-            header("Location: lot.php?lot_id=".$lot_id);
-            exit();
-        }
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$add_lot["lot-name"], $add_lot["message"] , $add_lot["picture"], $add_lot["lot-price"], $add_lot["lot-step"], $add_lot["lot-date"], $id_cat, $_SESSION['user']['id']]);
+        $lot_id = $pdo->lastInsertId();
+        header("Location: lot.php?lot_id=".$lot_id);
+        exit();
     }
 }
 else {

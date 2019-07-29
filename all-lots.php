@@ -5,33 +5,15 @@ require_once ("init.php");
 require_once ("functions.php");
 require_once ("data.php");
 session_start();
-
-if (isset($_GET['category']) AND $_GET['category'] > 0 AND $_GET['category'] < 7) {
-    if ($_SESSION) {
-        $id_user = $_SESSION["user"]["id"];
-        $sql = "SELECT lot.*,  category.name as cat_name,
-  CASE WHEN id_winner = $id_user THEN '1'
-WHEN id_winner IS NULL THEN '3'
-  ELSE '2'
-END state
-  FROM lot
+$category_id = [1,2,3,4,5,6];
+if (in_array($_GET['category'], $category_id)) {
+    $sql = "SELECT lot.*,  category.name as cat_name, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff
+FROM lot
   JOIN category ON lot.id_category = category.id
-WHERE lot.id_category = ? ORDER BY lot.create_date DESC";
-    }
-    else {
-        $sql = "SELECT lot.*,  category.name as cat_name,
-  CASE WHEN id_winner IS NULL THEN '3'
-  ELSE '2'
-END state
-  FROM lot
-  JOIN category ON lot.id_category = category.id
-WHERE lot.id_category = ? ORDER BY lot.create_date DESC";
-    }
-    $stmt = db_get_prepare_stmt($con, $sql, [$_GET['category']]);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $lot = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $lot = check_lot_status($lot);
+WHERE lot.id_category = ? AND end_date > NOW() ORDER BY lot.create_date DESC";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$_GET['category']]);
+    $lot = $stmt->fetchAll();
 }
 else {
     return http_response_code(404);

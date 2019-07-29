@@ -14,13 +14,7 @@ JOIN category ON lot.id_category = category.id
 WHERE end_date > NOW()
 GROUP BY lot.id
 ORDER BY create_date DESC";
-$result = mysqli_query($con, $sql_lots);
-if ($result) {
-    $product = mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
-else {
-    $error = mysqli_error($con);
-}
+$product = $pdo->query($sql_lots)->fetchAll(PDO::FETCH_ASSOC);
 
 $main_content = templating("templates/index.php", ["product" => $product, "category" => $category]);
 if (isset($_SESSION["user"])) {

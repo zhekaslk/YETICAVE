@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c9de47-71ef-4163-a58b-b6106c8f03d9" name="Default" comment="">
+    <list default="true" id="e4c9de47-71ef-4163-a58b-b6106c8f03d9" name="Default" comment="Мощный апдейт, полностью избавился от функций для работы с БД (mysqli и mysql), вместо них вредрил PDO + мелкие правки, исправлена пара логических косяков">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/add.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/all-lots.php" beforeDir="false" afterPath="$PROJECT_DIR$/all-lots.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getwinner.php" beforeDir="false" afterPath="$PROJECT_DIR$/getwinner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/history.php" beforeDir="false" afterPath="$PROJECT_DIR$/history.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init.php" beforeDir="false" afterPath="$PROJECT_DIR$/init.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lot.php" beforeDir="false" afterPath="$PROJECT_DIR$/lot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-lots.php" beforeDir="false" afterPath="$PROJECT_DIR$/my-lots.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sign-up.php" beforeDir="false" afterPath="$PROJECT_DIR$/sign-up.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/all-lots.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/all-lots.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userdata.php" beforeDir="false" afterPath="$PROJECT_DIR$/userdata.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +39,12 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="yeticave@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FavoritesManager">
@@ -44,11 +54,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="my-lots.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="all-lots.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/all-lots.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#175#1" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logout.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my-lots.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/my-lots.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="240">
+              <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
               <folding>
                 <element signature="e#0#473#1" />
               </folding>
@@ -56,32 +87,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sign-up.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sign-up.php">
+      <file leaf-file-name="mysql_helper.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysql_helper.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+            <state relative-caret-position="30">
+              <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+              <folding>
+                <element signature="e#7#326#0#PHP" />
+                <element signature="n#db_get_prepare_stmt#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+            <state relative-caret-position="81">
+              <caret line="57" column="2" lean-forward="true" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
               <folding>
-                <element signature="e#65#321#0#PHP" />
                 <element signature="n#templating#0;n#!!top" />
-                <element signature="e#618#828#0#PHP" />
                 <element signature="n#format_sum#0;n#!!top" />
-                <element signature="e#1094#1254#0#PHP" />
                 <element signature="n#lot_timer#0;n#!!top" />
-                <element signature="e#1367#1686#0#PHP" />
                 <element signature="n#db_get_prepare_stmt#0;n#!!top" />
-                <element signature="e#2559#2810#0#PHP" />
                 <element signature="n#check_lot_status#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="24" column="34" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sign-up.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sign-up.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+              <folding>
+                <element signature="e#379#1278#0#PHP" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userdata.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/userdata.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -90,7 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>id=&quot;</find>
       <find>доб</find>
       <find>class</find>
       <find>req</find>
@@ -120,6 +179,7 @@
       <find>main-footer_</find>
       <find>butt</find>
       <find>sessi</find>
+      <find>$path</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,34 +201,34 @@
         <option value="$PROJECT_DIR$/scema.sql" />
         <option value="$PROJECT_DIR$/templates/error.php" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/init.php" />
-        <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/logout.php" />
         <option value="$PROJECT_DIR$/templates/email.php" />
-        <option value="$PROJECT_DIR$/getwinner.php" />
         <option value="$PROJECT_DIR$/data.php" />
         <option value="$PROJECT_DIR$/templates/add.php" />
         <option value="$PROJECT_DIR$/templates/login.php" />
         <option value="$PROJECT_DIR$/templates/sign-up.php" />
         <option value="$PROJECT_DIR$/templates/my-lots.php" />
         <option value="$PROJECT_DIR$/queries" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/templates/index.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/eb0fe53c-e276-4d5f-b28e-4c09cc6b6387/console.sql" />
         <option value="$PROJECT_DIR$/templates/lot.php" />
         <option value="$PROJECT_DIR$/templates/history.php" />
-        <option value="$PROJECT_DIR$/my-lots.php" />
-        <option value="$PROJECT_DIR$/history.php" />
         <option value="$PROJECT_DIR$/templates/search.php" />
-        <option value="$PROJECT_DIR$/search.php" />
+        <option value="$PROJECT_DIR$/templates/layout.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/getwinner.php" />
+        <option value="$PROJECT_DIR$/history.php" />
+        <option value="$PROJECT_DIR$/init.php" />
+        <option value="$PROJECT_DIR$/lot.php" />
+        <option value="$PROJECT_DIR$/add.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/eb0fe53c-e276-4d5f-b28e-4c09cc6b6387/console.sql" />
         <option value="$PROJECT_DIR$/templates/all-lots.php" />
         <option value="$PROJECT_DIR$/all-lots.php" />
-        <option value="$PROJECT_DIR$/templates/layout.php" />
-        <option value="$PROJECT_DIR$/userdata.php" />
-        <option value="$PROJECT_DIR$/add.php" />
-        <option value="$PROJECT_DIR$/lot.php" />
-        <option value="$PROJECT_DIR$/functions.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/search.php" />
         <option value="$PROJECT_DIR$/sign-up.php" />
+        <option value="$PROJECT_DIR$/userdata.php" />
+        <option value="$PROJECT_DIR$/functions.php" />
+        <option value="$PROJECT_DIR$/my-lots.php" />
       </list>
     </option>
   </component>
@@ -288,7 +348,8 @@
       <workItem from="1563143784533" duration="15908000" />
       <workItem from="1563312011183" duration="24404000" />
       <workItem from="1563662657464" duration="12599000" />
-      <workItem from="1563998040050" duration="6965000" />
+      <workItem from="1563998040050" duration="8009000" />
+      <workItem from="1564349545686" duration="16141000" />
     </task>
     <task id="LOCAL-00001" summary="Task 3, part 1: Templating">
       <created>1544239061639</created>
@@ -451,11 +512,25 @@
       <option name="project" value="LOCAL" />
       <updated>1563999020040</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Версия близкая к финальной. Выполнены все пункты и задания (кроме пагинации). Мелкие правки, чоткие комментарии к функциям.">
+      <created>1564008274267</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1564008274267</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Версия близкая к финальной. Выполнены все пункты и задания (кроме пагинации). Мелкие правки, чоткие комментарии к функциям. + обновил файл с БД">
+      <created>1564008517784</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1564008517784</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="411377000" />
+    <option name="totallyTimeSpent" value="428562000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -470,44 +545,44 @@
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49836066" visible="true" weight="0.1621212" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" weight="0.3287879" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32755905" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3295082" />
+      <window_info anchor="bottom" id="Database Console" order="12" visible="true" weight="0.3065574" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49836066" visible="true" weight="0.16439395" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" weight="0.3287879" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" sideWeight="0.50163937" side_tool="true" weight="0.18106061" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Database Console" order="12" visible="true" weight="0.3065574" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info active="true" anchor="bottom" id="Database Console" order="12" visible="true" weight="0.3065574" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49836066" visible="true" weight="0.14621212" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32755905" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Database" order="3" weight="0.3287879" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32755905" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -577,7 +652,9 @@
     <MESSAGE value="Добавлена страница отображения списка лотов по категориям + как всегда мелкие правки и фиксы" />
     <MESSAGE value="Добавлена страница отображения всех ставок пользователя." />
     <MESSAGE value="Доработки страниц с отображением статуса лота (выигран(для авторизованых юзеров), открыт или закрыт) + мелкие правки" />
-    <option name="LAST_COMMIT_MESSAGE" value="Доработки страниц с отображением статуса лота (выигран(для авторизованых юзеров), открыт или закрыт) + мелкие правки" />
+    <MESSAGE value="Версия близкая к финальной. Выполнены все пункты и задания (кроме пагинации). Мелкие правки, чоткие комментарии к функциям." />
+    <MESSAGE value="Версия близкая к финальной. Выполнены все пункты и задания (кроме пагинации). Мелкие правки, чоткие комментарии к функциям. + обновил файл с БД" />
+    <option name="LAST_COMMIT_MESSAGE" value="Версия близкая к финальной. Выполнены все пункты и задания (кроме пагинации). Мелкие правки, чоткие комментарии к функциям. + обновил файл с БД" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -666,9 +743,6 @@
     <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -704,13 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="40" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/my-lots.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -739,41 +806,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/eb0fe53c-e276-4d5f-b28e-4c09cc6b6387/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/history.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-30">
           <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/all-lots.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="18" column="35" lean-forward="true" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#372#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -798,45 +834,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/userdata.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/add.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="96" selection-start-line="6" selection-start-column="96" selection-end-line="6" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="77" column="19" lean-forward="true" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all-lots.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="18" column="57" lean-forward="true" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#255#1" />
-            <element signature="e#0#217#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getwinner.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#345#1" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -847,55 +848,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="300">
+          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getwinner.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
           <folding>
-            <element signature="e#0#307#1" />
+            <element signature="e#0#345#1" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/history.php">
+    <entry file="file://$PROJECT_DIR$/add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        <state relative-caret-position="210">
+          <caret line="14" column="89" lean-forward="true" selection-start-line="14" selection-start-column="89" selection-end-line="14" selection-end-column="89" />
           <folding>
-            <element signature="e#501#1233#0#PHP" />
-            <element signature="e#0#291#1" />
+            <element signature="e#437#1603#0#PHP" />
+            <element signature="e#1692#2262#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lot.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="70" column="60" lean-forward="true" selection-start-line="70" selection-start-column="60" selection-end-line="70" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/eb0fe53c-e276-4d5f-b28e-4c09cc6b6387/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="76" lean-forward="true" selection-end-line="3" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logout.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lot.php">
+    <entry file="file://$PROJECT_DIR$/history.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="83" column="6" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
+        <state relative-caret-position="447">
+          <caret line="36" column="2" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-55">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-lots.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding>
-            <element signature="e#0#180#1" />
+            <element signature="e#0#175#1" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#372#1" />
+            <element signature="e#0#334#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/all-lots.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="32" column="60" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        <state relative-caret-position="213">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init.php">
+    <entry file="file://$PROJECT_DIR$/sign-up.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="447">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="e#379#1278#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userdata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -910,38 +988,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my-lots.php">
+    <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        <state relative-caret-position="81">
+          <caret line="57" column="2" lean-forward="true" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
           <folding>
-            <element signature="e#0#473#1" />
+            <element signature="n#templating#0;n#!!top" />
+            <element signature="n#format_sum#0;n#!!top" />
+            <element signature="n#lot_timer#0;n#!!top" />
+            <element signature="n#db_get_prepare_stmt#0;n#!!top" />
+            <element signature="n#check_lot_status#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sign-up.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions.php">
+    <entry file="file://$PROJECT_DIR$/my-lots.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+        <state relative-caret-position="240">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
           <folding>
-            <element signature="e#65#321#0#PHP" />
-            <element signature="n#templating#0;n#!!top" />
-            <element signature="e#618#828#0#PHP" />
-            <element signature="n#format_sum#0;n#!!top" />
-            <element signature="e#1094#1254#0#PHP" />
-            <element signature="n#lot_timer#0;n#!!top" />
-            <element signature="e#1367#1686#0#PHP" />
-            <element signature="n#db_get_prepare_stmt#0;n#!!top" />
-            <element signature="e#2559#2810#0#PHP" />
-            <element signature="n#check_lot_status#0;n#!!top" />
+            <element signature="e#0#473#1" />
           </folding>
         </state>
       </provider>
