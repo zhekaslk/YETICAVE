@@ -4,7 +4,7 @@
     <ul class="promo__list">
         <? foreach ($category as $value) { ?>
             <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="all-lots.php?category=<?=$value["id"];?>"><?=$value["name"]?></a>
+                <a class="promo__link" href="all-lots.php?category=<?= $value["id"]; ?>"><?= $value["name"]; ?></a>
         <? } ?>
     </ul>
 </section>
@@ -17,18 +17,18 @@
         <ul class="lots__list">
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?=$value['img'];?>" width="350" height="260" alt="Сноуборд">
+                    <img src="<?= $value['img']; ?>" width="350" height="260" alt="Сноуборд">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?=$value['category'];?></span>
-                    <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?=$value['id']; ?>"><?=$value['name'];?></a></h3>
+                    <span class="lot__category"><?= $value['category']; ?></span>
+                    <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?= $value['id']; ?>"><?= $value['name']; ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=format_sum($value['price']);?> </span>
+                            <span class="lot__cost"><?= format_sum($value['price']); ?> </span>
                         </div>
                         <div class="lot__timer timer">
-                            <?=lot_timer($value["timediff"]); ?>
+                            <?= lot_timer($value["timediff"]); ?>
                         </div>
                     </div>
                 </div>

@@ -19,10 +19,7 @@ $product = $pdo->query($sql_lots)->fetchAll(PDO::FETCH_ASSOC);
 $main_content = templating("templates/index.php", ["product" => $product, "category" => $category]);
 if (isset($_SESSION["user"])) {
     $layout_content = templating("templates/layout.php", ["page_name" => "Главная", "user_avatar" => $_SESSION["user"]["avatar"], "user_name" => $_SESSION["user"]["name"], "main_content" => $main_content, "category" => $category]);
-}
-else {
+} else {
     $layout_content = templating("templates/layout.php", ["page_name" => "Главная", "main_content" => $main_content, "category" => $category]);
 }
-//var_dump($product);
 print $layout_content;
-

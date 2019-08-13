@@ -3,35 +3,35 @@
         <ul class="nav__list container">
             <? foreach ($category as $value) { ?>
                 <li class="nav__item">
-                    <a href="all-lots.php?category=<?=$value["id"];?>"><?=$value["name"]; ?></a>
+                    <a href="all-lots.php?category=<?= $value["id"]; ?>"><?= $value["name"]; ?></a>
                 </li>
             <? } ?>
         </ul>
     </nav>
     <div class="container">
         <section class="lots">
-            <? if (!$_GET['search'] OR !$lot) { ?>
+            <? if (!$_GET['search'] || !$lot) { ?>
             <h2>По вашему запросу ничего не найдено</h2>
         </section>
             <? }
             else { ?>
-                <h2>Результаты поиска по запросу «<span><?=$_GET['search']; ?></span>»</h2>
+                <h2>Результаты поиска по запросу «<span><?= $_GET['search']; ?></span>»</h2>
         <ul class="lots__list">
             <? foreach ($lot as $value) { ?>
                 <li class="lots__item lot">
                     <div class="lot__image">
-                        <img src="<?=$value['img'];?>" width="350" height="260" alt="Сноуборд">
+                        <img src="<?= $value['img']; ?>" width="350" height="260" alt="Сноуборд">
                     </div>
                     <div class="lot__info">
-                        <span class="lot__category"><?=$value['category'];?></span>
-                        <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?=$value['id']; ?>"><?=$value['name'];?></a></h3>
+                        <span class="lot__category"><?= $value['category']; ?></span>
+                        <h3 class="lot__title"><a class="text-link" href="lot.php?lot_id=<?= $value['id']; ?>"><?= $value['name']; ?></a></h3>
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?=format_sum($value['price']);?></span>
+                                <span class="lot__cost"><?= format_sum($value['price']); ?></span>
                             </div>
-                            <div class="lot__timer timer <?=$value["timer_style"]; ?>">
-                                <?=$value["timer_status"]; ?>
+                            <div class="lot__timer timer <?= $value["timer_style"]; ?>">
+                                <?= $value["timer_status"]; ?>
                             </div>
                         </div>
                     </div>

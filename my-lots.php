@@ -1,9 +1,9 @@
 <?php
 //отображение ставок пользователя
 require_once "vendor/autoload.php";
-require_once ("init.php");
-require_once ("functions.php");
-require_once ("data.php");
+require_once("init.php");
+require_once("functions.php");
+require_once("data.php");
 session_start();
 
 if (isset($_SESSION["user"])) {
@@ -19,11 +19,9 @@ END state FROM rate
 ORDER BY rate.date DESC";
     $lot = $pdo->query($sql)->fetchAll();
     $lot = check_lot_status($lot);
-}
-else {
+} else {
     header("Location: login.php");
 }
-//var_dump($lot);
 $main_content = templating("templates/my-lots.php", ["lot" => $lot, "category" => $category]);
-$layout_content = templating("templates/layout.php", ["page_name" => "Мои ставки",  "main_content" => $main_content, "category" => $category]);
+$layout_content = templating("templates/layout.php", ["page_name" => "Мои ставки", "main_content" => $main_content, "category" => $category]);
 print $layout_content;

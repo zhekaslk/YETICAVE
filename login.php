@@ -7,7 +7,7 @@ require_once "init.php";
 
 session_start();
 //проверка отправлена ла форма
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $auth = $_POST;
     $errors = [];
     //проверка на заполненность полей добавление ошибок в массив, если таковые имеются
@@ -27,25 +27,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             if (!password_verify($auth["password"], $result_arr["password"])) {
                 $errors['auth'] = 'Вы ввели неверный логин/пароль';
             }
-        }
-        else {
+        } else {
             $errors['auth'] = 'Вы ввели неверный логин/пароль';
         }
     }
     //если имеются ошибки то показ этих ошибок
     if (count($errors)) {
         $main_content = templating("templates/login.php", ['category' => $category, 'errors' => $errors, 'auth' => $auth]);
-    }
-    //если ошибок не имеется то авторизация и переадресация на главную страницу
+    } //если ошибок не имеется то авторизация и переадресация на главную страницу
     else {
-            $_SESSION['user'] = $result_arr;
-            header("Location: /index.php");
-            exit();
-        }
-}
-else {
+        $_SESSION['user'] = $result_arr;
+        header("Location: /index.php");
+        exit();
+    }
+} else {
     $main_content = templating("templates/login.php", ['category' => $category]);
 }
-
 $layout_content = templating("templates/layout.php", ["page_name" => "Главная", "main_content" => $main_content, "category" => $category]);
 print $layout_content;

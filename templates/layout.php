@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><?=$page_name ?></title>
+    <title><?= $page_name; ?></title>
     <link href="css/normalize.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -22,10 +22,10 @@
         <a class="main-header__add-lot button" href="/add.php">Добавить лот</a>
         <nav class="user-menu">
                 <div class="user-menu__image>">
-                    <img src="<?=$_SESSION["user"]["avatar"];?>" width="40" height="40" alt="Пользователь" >
+                    <img src="<?= $_SESSION["user"]["avatar"]; ?>" width="40" height="40" alt="Пользователь" >
                 </div>
                 <div class="user-menu__logged">
-                    <p><?=$_SESSION["user"]["name"];?> </p>
+                    <p><?= $_SESSION["user"]["name"]; ?> </p>
                     <a href="/logout.php">Выйти</a>
                 </div>
             <? }
@@ -47,7 +47,7 @@
 </header>
 
 <main class="container">
-    <?=$main_content; ?>
+    <?= $main_content; ?>
 </main>
 
 <footer class="main-footer">
@@ -55,7 +55,7 @@
         <ul class="nav__list container">
             <? foreach ($category as $value) { ?>
                 <li class="nav__item">
-                    <a href="all-lots.php?category=<?=$value["id"];?>"><?=$value["name"]; ?></a>
+                    <a href="all-lots.php?category=<?= $value["id"]; ?>"><?= $value["name"]; ?></a>
             </li>
             <? } ?>
         </ul>
