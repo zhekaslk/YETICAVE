@@ -18,8 +18,8 @@ $opt = [
 ];
 try {
     $pdo = new PDO($dsn, $user, $password, $opt);
-} catch (Exception $exception) {
-    echo "Сорян!";
+} catch (PDOException $ex) {
+    echo "Cоединение прервано!". $ex->getMessage();
 }
 
 
