@@ -1,5 +1,6 @@
 <?php
 //отображение ставок пользователя
+use lot\Lot;
 require_once "vendor/autoload.php";
 require_once("init.php");
 require_once("functions.php");
@@ -7,18 +8,8 @@ require_once("data.php");
 session_start();
 
 if (isset($_SESSION["user"])) {
-    $user_id = $_SESSION["user"]["id"];
-    $sql = "SELECT rate.*, lot.name, lot.message, lot.img, lot.id_category, id_winner, users.contact, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff, 
-CASE WHEN id_winner = id_user THEN '1'
-WHEN id_winner IS NULL THEN '3'
-  ELSE '2'
-END state FROM rate
-  JOIN lot ON lot.id = rate.id_lot
-  JOIN users ON lot.id_author = users.id
-  JOIN (SELECT MAX(rate.id) as last_rate FROM rate WHERE rate.id_user = 24 GROUP BY rate.id_lot) as l ON rate.id = last_rate
-ORDER BY rate.date DESC";
-    $lot = $pdo->query($sql)->fetchAll();
-    $lot = check_lot_status($lot);
+    $lot = Lot::userRates();
+    $lot = Lot::checkLotStatus($lot);
 } else {
     header("Location: login.php");
 }

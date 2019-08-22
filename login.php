@@ -1,4 +1,6 @@
 <?php
+
+use lot\Lot;
 //страница для авторизации
 require_once "vendor/autoload.php";
 require_once "functions.php";
@@ -8,35 +10,14 @@ require_once "init.php";
 session_start();
 //проверка отправлена ла форма
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $auth = $_POST;
-    $errors = [];
-    //проверка на заполненность полей добавление ошибок в массив, если таковые имеются
-    if (empty($auth['email'])) {
-        $errors['email'] = 'Это поле надо заполнить, падла!';
-    }
-    if (empty($auth['password'])) {
-        $errors['password'] = 'Это поле надо заполнить, падла!';
-    }
-    //валидация введенных данных
-    if (empty($errors)) {
-        $sql = "SELECT id, email, password, name, avatar FROM users WHERE email = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$auth["email"]]);
-        if ($stmt->rowCount() != 0) {
-            $result_arr = $stmt->fetch();
-            if (!password_verify($auth["password"], $result_arr["password"])) {
-                $errors['auth'] = 'Вы ввели неверный логин/пароль';
-            }
-        } else {
-            $errors['auth'] = 'Вы ввели неверный логин/пароль';
-        }
-    }
-    //если имеются ошибки то показ этих ошибок
+    $res = Lot::checkLogin($_POST);
+    $errors = $res["errors"];
+    $auth = $res["auth"];
     if (count($errors)) {
         $main_content = templating("templates/login.php", ['category' => $category, 'errors' => $errors, 'auth' => $auth]);
-    } //если ошибок не имеется то авторизация и переадресация на главную страницу
+    }
     else {
-        $_SESSION['user'] = $result_arr;
+        $_SESSION['user'] = $auth;
         header("Location: /index.php");
         exit();
     }

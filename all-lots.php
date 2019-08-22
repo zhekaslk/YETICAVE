@@ -1,5 +1,7 @@
 <?php
 //отображение списка лотов по категории
+use lot\Lot;
+
 require_once "vendor/autoload.php";
 require_once("init.php");
 require_once("functions.php");
@@ -8,13 +10,7 @@ session_start();
 
 $category_id = [1, 2, 3, 4, 5, 6];
 if (in_array($_GET['category'], $category_id)) {
-    $sql = "SELECT lot.*,  category.name as cat_name, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff
-FROM lot
-  JOIN category ON lot.id_category = category.id
-WHERE lot.id_category = ? && end_date > NOW() ORDER BY lot.create_date DESC";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$_GET['category']]);
-    $lot = $stmt->fetchAll();
+    $lot = Lot::lotsByCatagory($_GET['category']);
 } else {
     return http_response_code(404);
 }

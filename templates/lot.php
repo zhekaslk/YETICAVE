@@ -23,11 +23,11 @@
                         Мин. ставка <span><?= format_sum($lot['price'] + $lot['step']); ?></span>
                     </div>
                 </div>
-                <form class="lot-item__form <? empty($errors) ? "" : "form--invalid" ?> action="/lot.php?lot_id=<?= $_GET["lot_id"]; ?>" method="post" >
+                <form class="lot-item__form <?= empty($errors) ? "" : "form--invalid" ?> action="/lot.php?lot_id=<?= $_GET["lot_id"]; ?>" method="post" >
                     <p class="lot-item__form-item">
                         <label for="cost">Ваша ставка</label>
                         <input id="cost" type="number" name="cost" placeholder=<?= $lot['price'] + $lot['step']; ?>>
-                        <span><? isset($errors['cost']) ? print $errors['cost'] : ""; ?></span>
+                        <span><?= isset($errors['cost']) ? $errors['cost'] : ""; ?></span>
                     </p>
                     <button type="submit" class="button">Сделать ставку</button>
                 </form>

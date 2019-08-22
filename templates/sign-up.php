@@ -8,26 +8,26 @@
             <? } ?>
         </ul>
     </nav>
-    <form enctype="multipart/form-data" class="form container  <? empty($errors) ? "" : "form--invalid" ?> action="/sign-up.php" method="post" > <!-- form--invalid -->
+    <form enctype="multipart/form-data" class="form container  <?= empty($errors) ? "" : "form--invalid" ?> action="/sign-up.php" method="post" > <!-- form--invalid -->
         <h2>Регистрация нового аккаунта</h2>
-        <div class="form__item <? isset($errors['email']) ? "form__item--invalid" : "" ?> "> <!-- form__item--invalid -->
+        <div class="form__item <?= isset($errors['email']) ? "form__item--invalid" : "" ?> ">
             <label for="email">E-mail*</label>
-            <input id="email" type="text" name="email" placeholder="Введите e-mail" value="<? isset($sign_up['email']) ? print $sign_up['email'] : '' ?>" >
+            <input id="email" type="text" name="email" placeholder="Введите e-mail" value="<?= isset($sign_up['email']) ? $sign_up['email'] : '' ?>" >
             <span class="form__error"><?= $errors['email']; ?></span>
         </div>
-        <div class="form__item <? isset($errors["password"]) ? "form__item--invalid" : "" ?>">
+        <div class="form__item <?= isset($errors["password"]) ? "form__item--invalid" : "" ?>">
             <label for="password">Пароль*</label>
             <input id="password" type="text" name="password" placeholder="Введите пароль" >
             <span class="form__error"><?= $errors['password']; ?></span>
         </div>
-        <div class="form__item <? isset($errors["name"]) ? "form__item--invalid" : "" ?>">
+        <div class="form__item <?= isset($errors["name"]) ? "form__item--invalid" : "" ?>">
             <label for="name">Имя*</label>
-            <input id="name" type="text" name="name" placeholder="Введите имя" value="<? isset($sign_up['name']) ? print $sign_up['name'] : '' ?>" >
+            <input id="name" type="text" name="name" placeholder="Введите имя" value="<?= isset($sign_up['name']) ? $sign_up['name'] : '' ?>" >
             <span class="form__error"><?= $errors['name']; ?></span>
         </div>
-        <div class="form__item <? isset($errors["message"]) ? "form__item--invalid" : "" ?>">
+        <div class="form__item <?= isset($errors["message"]) ? "form__item--invalid" : "" ?>">
             <label for="message">Контактные данные*</label>
-            <textarea id="message" name="message" placeholder="Напишите как с вами связаться"><? isset($sign_up['message']) ? print $sign_up['message'] : "" ?></textarea>
+            <textarea id="message" name="message" placeholder="Напишите как с вами связаться"><?= isset($sign_up['message']) ? $sign_up['message'] : "" ?></textarea>
             <span class="form__error"><?= $errors['message']; ?></span>
         </div>
         <div class="form__item form__item--file form__item--last">

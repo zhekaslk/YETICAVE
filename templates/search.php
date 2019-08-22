@@ -10,12 +10,7 @@
     </nav>
     <div class="container">
         <section class="lots">
-            <? if (!$_GET['search'] || !$lot) { ?>
-            <h2>По вашему запросу ничего не найдено</h2>
-        </section>
-            <? }
-            else { ?>
-                <h2>Результаты поиска по запросу «<span><?= $_GET['search']; ?></span>»</h2>
+                <h2><?= $message ?> <? if (!empty($lot)) { ?> <span><?= "«".$search."»"; ?></span></h2>
         <ul class="lots__list">
             <? foreach ($lot as $value) { ?>
                 <li class="lots__item lot">
@@ -50,4 +45,3 @@
             <? } ?>
     </div>
 </main>
-
