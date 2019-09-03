@@ -2,11 +2,11 @@
     <nav class="nav">
         <ul class="nav__list container">
             <!--отображение списка категорий  -->
-            <? foreach ($category as $value) { ?>
+            <? foreach ($category as $value): ?>
                 <li class="nav__item">
                     <a href="all-lots.php?category=<?= $value["id"]; ?>"><?= $value["name"]; ?></a>
                 </li>
-            <? } ?>
+            <? endforeach; ?>
         </ul>
     </nav>
     <form enctype="multipart/form-data" class="form form--add-lot  container <?= empty($errors) ? "" : "form--invalid" ?>" action="/add.php" method="post" >
@@ -20,15 +20,14 @@
             <div class="form__item <?= isset($errors["category"]) ? "form__item--invalid" : "" ?>">
                 <label for="category">Категория</label>
                 <select id="category" name="category"  >
-                    <? if (isset($add_lot["category"])) { ?>
-                    <option> <?= $add_lot["category"]; ?> </option> <?
-                    }
-                     else { ?>
-                    <option value="" selected disabled hidden>Выберите категорию</option> <?
-                     }
-                     foreach ($category as $value) { ?>
+                    <? if (isset($add_lot["category"])): ?>
+                    <option> <?= $add_lot["category"]; ?> </option>
+                    <? else: ?>
+                    <option value="" selected disabled hidden>Выберите категорию</option>
+                    <? endif; ?>
+                    <? foreach ($category as $value): ?>
                        <option><?= $value["name"]; ?> </option>
-                     <? } ?>
+                     <? endforeach; ?>
                 </select>
                 <span class="form__error"><?= $errors['category']; ?></span>
             </div>

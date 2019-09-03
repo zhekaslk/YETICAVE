@@ -1,6 +1,6 @@
 <?php
 
-use lot\Lot;
+use classes\User;
 //страница для авторизации
 require_once "vendor/autoload.php";
 require_once "functions.php";
@@ -10,7 +10,7 @@ require_once "init.php";
 session_start();
 //проверка отправлена ла форма
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $res = Lot::checkLogin($_POST);
+    $res = User::checkLogin($_POST);
     $errors = $res["errors"];
     $auth = $res["auth"];
     if (count($errors)) {

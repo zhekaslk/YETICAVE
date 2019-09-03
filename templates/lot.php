@@ -9,7 +9,7 @@
             <p class="lot-item__description"><?= $lot['message']; ?></p>
         </div>
         <div class="lot-item__right">
-            <? if (isset($_SESSION["user"]) && $_SESSION["user"]["id"] != $lot["id_author"] && $lot["timediff"] > 0) {  ?>
+            <? if (isset($_SESSION["user"]) && $_SESSION["user"]["id"] != $lot["id_author"] && $lot["timediff"] > 0): ?>
             <div class="lot-item__state">
                 <div class="lot-item__timer timer">
                     <?= $lot["timediff"]; ?>
@@ -32,17 +32,17 @@
                     <button type="submit" class="button">Сделать ставку</button>
                 </form>
             </div>
-            <? } ?>
+            <? endif; ?>
             <div class="history">
                 <h3>История ставок (<span><?= count($rates); ?></span>)</h3>
                 <table class="history__list">
-                    <? foreach ($rates as $rate) { ?>
+                    <? foreach ($rates as $rate): ?>
                     <tr class="history__item">
                         <td class="history__name"><?= $rate["name"]; ?></td>
                         <td class="history__price"><?= format_sum($rate["bet"]); ?></td>
                         <td class="history__time"><?= $rate["date_add"]; ?></td>
                     </tr>
-                    <? } ?>
+                    <? endforeach; ?>
                 </table>
             </div>
         </div>

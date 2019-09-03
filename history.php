@@ -1,6 +1,6 @@
 <?php
 //страница со списком посещенных страниц
-use lot\Lot;
+use classes\Lot;
 
 require_once "vendor/autoload.php";
 require_once "functions.php";

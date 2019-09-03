@@ -1,7 +1,8 @@
 <?php
 //страница отображения лота
 
-use lot\Lot;
+use classes\Lot;
+use classes\Rate;
 
 require_once "vendor/autoload.php";
 require_once "functions.php";
@@ -17,14 +18,14 @@ if (empty($lot)) {
     return http_response_code(404);
 }
 //блок отображения истории торгов (все ставки к данному лоту)
-$rates = Lot::lotRates($lot_id);
+$rates = Rate::lotRates($lot_id);
 //форма добавления ставки
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $errors = Lot::checkAddRate($_POST, $lot);
+    $errors = Rate::checkAddRate($_POST, $lot);
     if (count($errors)) {
         $main_content = templating("templates/lot.php", ['category' => $category, 'errors' => $errors, "lot" => $lot, "rates" => $rates]);
     } else {
-        Lot::addRate($lot_id, $_POST);
+        Rate::addRate($lot_id, $_POST);
     }
 } else {
     $main_content = templating("templates/lot.php", ["lot" => $lot, "rates" => $rates]);

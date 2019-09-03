@@ -1,6 +1,8 @@
 <?php
 //отображение ставок пользователя
-use lot\Lot;
+use classes\Rate;
+use classes\Lot;
+
 require_once "vendor/autoload.php";
 require_once("init.php");
 require_once("functions.php");
@@ -8,7 +10,7 @@ require_once("data.php");
 session_start();
 
 if (isset($_SESSION["user"])) {
-    $lot = Lot::userRates();
+    $lot = Rate::userRates();
     $lot = Lot::checkLotStatus($lot);
 } else {
     header("Location: login.php");

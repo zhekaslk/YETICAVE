@@ -1,19 +1,19 @@
 <main>
     <nav class="nav">
         <ul class="nav__list container">
-            <? foreach ($category as $value) { ?>
+            <? foreach ($category as $value): ?>
                 <li class="nav__item">
                     <a href="all-lots.php?category=<?= $value["id"]; ?>"><?= $value["name"]; ?></a>
                 </li>
-            <? } ?>
+            <? endforeach; ?>
         </ul>
     </nav>
     <div class="container">
         <section class="lots">
             <h2><?= $message; ?></h2>
-            <? if (isset($lot)) { ?>
+            <? if (isset($lot)): ?>
             <ul class="lots__list">
-                <? foreach ($lot as $value) { ?>
+                <? foreach ($lot as $value): ?>
                 <li class="lots__item lot">
                     <div class="lot__image">
                         <img src="<?= $value['img']; ?>" width="350" height="260" alt="Сноуборд">
@@ -31,13 +31,12 @@
                             </div>
                         </div>
                     </div>
-                    <? } ?>
+                <? endforeach; ?>
             </ul>
         </section>
-            <? }
-            else { ?>
+            <? else: ?>
                 </section>
-            <? } ?>
+            <? endif; ?>
         <ul class="pagination-list">
             <li class="pagination-item pagination-item-prev"><a>Назад</a></li>
             <li class="pagination-item pagination-item-active"><a>1</a></li>

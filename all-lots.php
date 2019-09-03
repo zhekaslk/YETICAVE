@@ -1,6 +1,6 @@
 <?php
 //отображение списка лотов по категории
-use lot\Lot;
+use classes\Lot;
 
 require_once "vendor/autoload.php";
 require_once("init.php");

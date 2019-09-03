@@ -1,17 +1,17 @@
 <main>
     <nav class="nav">
         <ul class="nav__list container">
-            <? foreach ($category as $value) { ?>
+            <? foreach ($category as $value): ?>
                 <li class="nav__item">
                     <a href="all-lots.php?category=<?= $value["id"]; ?>"><?= $value["name"]; ?></a>
                 </li>
-            <? } ?>
+            <? endforeach; ?>
         </ul>
     </nav>
     <section class="rates container">
         <h2>Мои ставки</h2>
         <table class="rates__list">
-            <? foreach ($lot as $item) { ?>
+            <? foreach ($lot as $item): ?>
             <tr class="rates__item <?= $item["rate_style"]; ?>">
                 <td class="rates__info">
                     <div class="rates__img">
@@ -19,7 +19,9 @@
                     </div>
                     <div>
                         <h3 class="rates__title"><a href="lot.php?lot_id=<?= $item['id_lot']; ?>"><?= $item["name"]; ?></a></h3>
-                        <? if ($item["state"] == 1) { ?><p><?= $item["contact"]; ?></p><? } ?>
+                        <? if ($item["state"] == 1): ?>
+                            <p><?= $item["contact"]; ?></p>
+                        <? endif; ?>
                     </div>
                 </td>
                 <td class="rates__category">
@@ -35,7 +37,7 @@
                     <?= $item["date"]; ?>
                 </td>
             </tr>
-            <? } ?>
+            <? endforeach; ?>
         </table>
     </section>
 </main>

@@ -1,23 +1,22 @@
 <main>
     <nav class="nav">
         <ul class="nav__list container">
-            <? foreach ($category as $value) { ?>
+            <? foreach ($category as $value): ?>
                 <li class="nav__item">
                     <a href="all-lots.php?category=<?= $value["id"]; ?>"><?= $value["name"]; ?></a>
                 </li>
-            <? } ?>
+            <? endforeach; ?>
         </ul>
     </nav>
     <div class="container">
         <section class="lots">
-            <? if (!$lot) { ?>
+            <? if (!$lot): ?>
             <h2>На данный момент в категории "<?= $category[$_GET['category']-1]['name']; ?>" отсутствуют лоты</h2>
         </section>
-        <? }
-        else { ?>
+        <? else: ?>
             <h2>Все лоты в категории <span>«<?= $lot[0]["cat_name"]; ?>»</span></h2>
             <ul class="lots__list">
-                <? foreach ($lot as $value) { ?>
+                <? foreach ($lot as $value): ?>
                     <li class="lots__item lot">
                         <div class="lot__image">
                             <img src="<?= $value['img']; ?>" width="350" height="260" alt="Сноуборд">
@@ -36,7 +35,7 @@
                             </div>
                         </div>
                     </li>
-                <? } ?>
+                <? endforeach; ?>
             </ul>
             </section>
             <ul class="pagination-list">
@@ -47,6 +46,6 @@
                 <li class="pagination-item"><a href="#">4</a></li>
                 <li class="pagination-item pagination-item-next"><a href="#">Вперед</a></li>
             </ul>
-        <? } ?>
+        <? endif; ?>
     </div>
 </main>
