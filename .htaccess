@@ -1,0 +1,8 @@
+RewriteEngine On
+
+rewritecond %{REQUEST_URI} ^/backend/index/
+rewriterule ^(.*)$ /index.php [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
