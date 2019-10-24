@@ -6,7 +6,14 @@ use application\core\Model;
 
 class History extends Model
 {
-    public function lotViewHistory($lotIdFromCookie)
+    /**
+     * Функция поиска списка просмотренных лотов
+     *
+     * @param $lotIdFromCookie Список id лотов из кук
+     *
+     * @return $lot Список лотов
+     */
+    public function getLotViewHistory($lotIdFromCookie)
     {
         $lot_id = strip_tags(htmlspecialchars($lotIdFromCookie));
         if ($_SESSION) {

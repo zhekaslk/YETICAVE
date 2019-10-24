@@ -6,6 +6,13 @@ use application\core\Model;
 
 class Search extends Model
 {
+    /**
+     * Поиск лотов
+     *
+     * @param $search Поисковой запрос
+     *
+     * @return $lot Результат запроса (список лотов)
+     */
     public function searchLot($search)
     {
         if ($search) {
@@ -34,5 +41,4 @@ ORDER BY create_date DESC";
             return $lot;
         }
     }
-
 }

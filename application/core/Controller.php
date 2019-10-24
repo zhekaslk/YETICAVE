@@ -30,5 +30,4 @@ abstract class Controller
             echo "Moдель не найдена!!!";
         }
     }
-
 }

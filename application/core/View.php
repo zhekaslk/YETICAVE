@@ -15,6 +15,12 @@ class View
         $this->path = $route["controller"] . "/" . $route["action"];
     }
 
+    /**
+     * Функция шаблонизатор
+     *
+     * @param $template_data Массив данных для передачи в шаблон
+     *
+     */
     public function templating($template_data = [])
     {
         ob_start();

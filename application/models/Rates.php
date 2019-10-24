@@ -6,7 +6,12 @@ use application\core\Model;
 
 class Rates extends Model
 {
-    public function userRates()
+    /**
+     * Получение списка лотов, на которые пользователь сделал ставку
+     *
+     * @return $lot Список лотов
+     */
+    public function getUserRates()
     {
         $user_id = $_SESSION["user"]["id"];
         $sql = "SELECT rate.*, lot.name, lot.message, lot.img, lot.id_category, id_winner, users.contact, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff, 

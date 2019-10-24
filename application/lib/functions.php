@@ -7,6 +7,7 @@
  * @param $template_data Данные для шаблона
  *
  * @return template Готовый контент
+ * @deprecated используются новая функция
  */
 function templating($template_route, $template_data)
 {      ///функция шаблонизации

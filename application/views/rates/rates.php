@@ -18,7 +18,7 @@
                         <img src="<?= $item["img"]; ?>" width="54" height="40" alt="Сноуборд">
                     </div>
                     <div>
-                        <h3 class="rates__title"><a href="../lot/lot.php"><?= $item["name"]; ?></a></h3>
+                        <h3 class="rates__title"><a href="../lot/<?= $item['id']; ?>"><?= $item["name"]; ?></a></h3>
                         <? if ($item["state"] == 1): ?>
                             <p><?= $item["contact"]; ?></p>
                         <? endif; ?>

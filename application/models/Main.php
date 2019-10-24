@@ -8,6 +8,11 @@ use Swift_SmtpTransport;
 
 class Main extends Model
 {
+    /**
+     * Получение списка актуальных на даный момент лотов
+     *
+     * @return $lot Список лотов
+     */
     public function getActualLots()
     {
         $sql = "SELECT lot.id, lot.name, price, img, create_date, COUNT(rate.id), category.name as category, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff FROM lot
@@ -20,6 +25,10 @@ ORDER BY create_date DESC";
         return $lot;
     }
 
+    /**
+     * Определение победителей в аукционах
+     *
+     */
     public function getWinner()
     {
         $sql_search = "SELECT users.name, users.email, lot.name as lotname, price, rate.id_user, rate.id_lot FROM users, lot, rate
@@ -29,11 +38,17 @@ WHERE lot.end_date <= NOW() AND lot.id_winner IS NULL AND rate.id_lot = lot.id A
         $sql_add_winner = "UPDATE lot SET id_winner = ? WHERE lot.id = ?";
         $lot = $this->pdo->getData($sql_search);
         foreach ($lot as $item) {
-            //$this->pdo->udpateDatabase($sql_add_winner, [$item["id_user"], $item["id_lot"]]);
+            $this->pdo->udpateDatabase($sql_add_winner, [$item["id_user"], $item["id_lot"]]);
             self::sendEmail($item);
         }
     }
 
+    /**
+     * Отправка на email сообщения победителю аукциона
+     *
+     * @param $lot Лот, на который пользователь выиграл аукцион
+     *
+     */
     public static function sendEmail($lot)
     {
         $mail_content = templating("application/views/email/email.php", ["mail" => $lot]);

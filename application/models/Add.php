@@ -6,6 +6,13 @@ use application\core\Model;
 
 class Add extends Model
 {
+    /**
+     * Функция проверки данных добавления лота
+     *
+     * @param $add_lot, $add_file Данные нового лота и файл изображения
+     *
+     * @return $errors и $add_lot Массив ошибок и данные лота
+     */
     public function checkAddLot(array $add_lot, $add_file)
     {
         $add_lot = filter_input_array(INPUT_POST, $add_lot);
@@ -52,6 +59,12 @@ class Add extends Model
         return ["errors" => $errors, "add_lot" => $add_lot];
     }
 
+    /**
+     * Функция добавления лота
+     *
+     * @param $add_lot Данные нового лота
+     *
+     */
     public function addLot($add_lot)
     {
         $sql = "INSERT INTO lot (name, message, img, price, step, create_date, end_date, id_category, id_author) VALUES (?, ?, ?, ?, ?, NOW(), ?, (SELECT id FROM category WHERE name = ?), ?)";
@@ -59,59 +72,4 @@ class Add extends Model
         header("Location: lot/" . $this->pdo->getLastInsertId());
         exit();
     }
-
-    public function lotInfo($lot_id)
-    {
-        $sql = "SELECT lot.*,  category.name as category, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff FROM lot
-JOIN category ON lot.id_category = category.id
-WHERE lot.id = ?";
-        $lot = $this->pdo->getData($sql, [$lot_id]);
-        if (empty($lot)) {
-            return $lot;
-        } else {
-            $lot[0]["timediff"] = lot_timer($lot[0]["timediff"]);
-            return $lot[0];
-        }
-
-    }
-
-    public function lotsByCatagory($category_id)
-    {
-        $sql = "SELECT lot.*,  category.name as cat_name, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff
-FROM lot
-  JOIN category ON lot.id_category = category.id
-WHERE lot.id_category = ? && end_date > NOW() ORDER BY lot.create_date DESC";
-        $lot = $this->pdo->getData($sql, [$category_id]);
-        return $lot;
-    }
-
-    public function searchLot($search)
-    {
-        if ($search) {
-            if ($_SESSION) {
-                $id_user = $_SESSION["user"]["id"];
-                $sql = "SELECT lot.id, lot.name, price, img, create_date, lot.message, category.name as category, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff, 
-CASE WHEN id_winner = $id_user THEN '1'
-WHEN id_winner IS NULL THEN '3'
-  ELSE '2'
-END state
-FROM lot
-  JOIN category ON lot.id_category = category.id
-WHERE MATCH(lot.name, lot.message) AGAINST(?)
-ORDER BY create_date DESC";
-            } else {
-                $sql = "SELECT lot.id, lot.name, price, img, create_date, lot.message, category.name as category, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff, 
-CASE WHEN id_winner IS NULL THEN '3'
-  ELSE '2'
-END state
-FROM lot
-  JOIN category ON lot.id_category = category.id
-WHERE MATCH(lot.name, lot.message) AGAINST(?)
-ORDER BY create_date DESC";
-            }
-            $lot = $this->pdo->getData($sql,[$search]);
-            return $lot;
-        }
-    }
-
 }

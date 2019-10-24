@@ -12,6 +12,12 @@ use application\core\Model;
 
 class Account extends Model
 {
+    /**
+     * Функция добавления нового пользователя
+     *
+     * @param $newUser Данные нового пользователя
+     * @return template Готовый контент
+     */
     public function addUser($newUser)
     {
         $pass = password_hash($newUser["password"], PASSWORD_DEFAULT);
@@ -19,6 +25,13 @@ class Account extends Model
         $this->pdo->udpateDatabase($sql,[$newUser["name"], $newUser["email"], $pass, $newUser["message"], $newUser["avatar"]]);
     }
 
+    /**
+     * Функция проверки данных авторизации
+     *
+     * @param $auth Данные авторизации
+     *
+     * @return $errors и $auth Массив ошибок и данные авторизации
+     */
     public function checkLogin($auth)
     {
         $auth = filter_input_array(INPUT_POST, $auth);
@@ -47,6 +60,13 @@ class Account extends Model
         return ["errors" => $errors, "auth" => $auth];
     }
 
+    /**
+     * Функция проверки данных регистрации
+     *
+     * @param $sign_up и $add_fileДанные регистрации и загруженный файл аватара
+     *
+     * @return $errors и $auth Массив ошибок и данные авторизации
+     */
     public function checkSignUp(array $sign_up, $add_file)
     {
         $sign_up = filter_input_array(INPUT_POST, $sign_up);

@@ -9,7 +9,7 @@ class RatesController extends Controller
     public function ratesAction()
     {
         if (isset($_SESSION["user"])) {
-            $lot = $this->model->userRates();
+            $lot = $this->model->getUserRates();
             $lot = $this->model->checkLotStatus($lot);
         } else {
             header("Location: /login");

@@ -8,7 +8,14 @@ use PDO;
 
 class Lot extends Model
 {
-    public function lotInfo($lot_id)
+    /**
+     * Функция получения лота по идентификатору
+     *
+     * @param $lot_id Идентификатор лота
+     *
+     * @return $lot Лот
+     */
+    public function getlotById($lot_id)
     {
         $sql = "SELECT lot.*,  category.name as category, TIMESTAMPDIFF(SECOND, NOW(), lot.end_date) as timediff FROM lot
 JOIN category ON lot.id_category = category.id
@@ -20,9 +27,15 @@ WHERE lot.id = ?";
             $lot[0]["timediff"] = lot_timer($lot[0]["timediff"]);
             return $lot[0];
         }
-
     }
 
+    /**
+     * Функция добавления ставки
+     *
+     * @param $lot_id id лота
+     * @param $add_rate размер ставки
+     *
+     */
     public function addRate($lot_id, $add_rate)
     {
         try {
@@ -40,6 +53,14 @@ WHERE lot.id = ?";
         }
     }
 
+    /**
+     * Функция проверки новой ставки
+     *
+     * @param $add_rate Новая ставка
+     * @param $lot Данные лота
+     *
+     * @return $errors Список ошибок
+     */
     public static function checkAddRate($add_rate, $lot)
     {
         $add_rate = filter_input_array(INPUT_POST, $add_rate);
@@ -57,7 +78,14 @@ WHERE lot.id = ?";
         return $errors;
     }
 
-    public function lotRates($lot_id)
+    /**
+     * Функция получения списка ставок для лота
+     *
+     * @param $lot_id Идентификатор лота
+     *
+     * @return $rates Список ставок
+     */
+    public function getLotRates($lot_id)
     {
         $sql = "SELECT bet, DATE_FORMAT(rate.date, '%d.%m.%y в %H:%i') as 'date_add', users.name FROM rate, users WHERE rate.id_lot = ? AND rate.id_user = users.id ORDER BY rate.date DESC";
         $rates = $this->pdo->getData($sql, [$lot_id]);
